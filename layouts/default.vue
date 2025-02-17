@@ -7,6 +7,7 @@
 
 <template>
   <div
+    id="default-layout"
     class="relative bg-gradient-to-t from-sky-300 to-sky-800 w-full h-screen flex items-center justify-center overflow-hidden"
   >
     <div class="relative w-11/12 sm:w-4/5 md:w-3/5 xl:w-1/2 max-w-[1680px] mx-auto z-50">
