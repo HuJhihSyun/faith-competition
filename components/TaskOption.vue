@@ -1,12 +1,3 @@
-<script setup>
-  const props = defineProps({
-    fn: {
-      type: Function,
-      default: () => {}
-    }
-  })
-</script>
-
 <template>
   <button
     class="relative flex justify-between items-center w-full mx-auto rounded-full px-3 py-2 overflow-hidden bg-gradient-to-t from-white/80 to-sky-200/50 transition-all duration-300 tracking-wider cursor-pointer group hover:from-white hover:to-sky-200"

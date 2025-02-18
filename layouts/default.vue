@@ -50,7 +50,6 @@
 
   .sacramento {
     font-family: 'Sacramento', sans-serif;
-    font-weight: 400;
   }
 
   .wen-kai-mono {
