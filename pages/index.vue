@@ -125,6 +125,11 @@
 
   const confirmSubmit = (payload: { category: number; minutes?: number }) => {
     console.log('confirmSubmit', payload)
+    const payloadData = {
+      ...userInformation.value,
+      ...payload
+    }
+    console.log('payloadData', payloadData)
     isConfirmModalShow.value = false
   }
 </script>

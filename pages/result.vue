@@ -5,6 +5,19 @@
   import MeetingSvg from '@/assets/images/handshake.svg?skipsvgo'
   import PraySvg from '@/assets/images/message-circle-heart.svg?skipsvgo'
 
+  useSeoMeta({
+    title: '2025 傳道777榮耀神',
+    author: '© 2025 Love and Word Church All rights reserved.',
+    keywords: '教會,傳道,空提,信仰,榮耀神',
+    description:
+      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
+    ogTitle: '2025 傳道777榮耀神',
+    ogDescription:
+      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
+    ogUrl: 'https://www.loveandword.tw/',
+    ogImage: 'https://www.loveandword.tw/resource/images/img.jpg'
+  })
+
   const point = ref<number>(0)
   const percentage = ref<number>(0)
   const goal = ref<number>(777)
@@ -77,7 +90,7 @@
         </TaskProgress>
       </template>
     </div>
-    <h6 class="text-white text-center text-sm underline mt-4 cursor-pointer" @click="openInfoModal">查看成績</h6>
+    <NuxtLink to="/info" class="text-white text-center text-sm underline mt-4">查看個人成績</NuxtLink>
   </div>
 </template>
 

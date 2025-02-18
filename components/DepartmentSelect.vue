@@ -2,12 +2,12 @@
   import { useVModel } from '@vueuse/core'
 
   enum DEPARTMENT {
-    GALAXY = 1,
-    SHINING_STAR = 2,
-    CAMPUS = 3,
-    YOUTH = 4,
-    FAMILY = 5,
-    OLDER = 6
+    GALAXY = 0,
+    SHINING_STAR = 1,
+    CAMPUS = 2,
+    YOUTH = 3,
+    FAMILY = 4,
+    OLDER = 5
   }
 
   const Department: Object[] = [
