@@ -50,9 +50,16 @@
   })
 
   const prayMinutes = ref<number>(0)
+  const prayMinutesRef = ref<HTMLInputElement | null>(null)
+  const isFocused = ref<boolean>(false)
 
   const confirmSubmit = () => {
     if (props.taskOption.id === 'pray') {
+      if (!prayMinutes.value) {
+        prayMinutesRef.value?.focus()
+        isFocused.value = true
+        return
+      }
       confirmPayload.minutes = prayMinutes.value
     }
     emit('confirmSubmit', confirmPayload)
@@ -73,9 +80,11 @@
             {{ props.taskOption.title }}
             <div v-if="props.taskOption.id === 'pray'" class="flex justify-center items-center w-full">
               <input
+                ref="prayMinutesRef"
                 v-model="prayMinutes"
                 type="text"
-                class="w-12 p-2 mx-2 text-sm text-slate-600 border border-slate-200 rounded-md text-center"
+                class="w-12 px-2 py-1.5 mx-2 text-sm text-slate-600 border border-slate-200 rounded-md text-center"
+                :class="{ 'outline-red-500': isFocused }"
               />
               <span>分鐘</span>
             </div>

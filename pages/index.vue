@@ -8,6 +8,8 @@
   import MeetingSvg from '@/assets/images/handshake.svg?skipsvgo'
   import PraySvg from '@/assets/images/message-circle-heart.svg?skipsvgo'
 
+  const router = useRouter()
+
   useSeoMeta({
     title: '2025 傳道777榮耀神',
     author: '© 2025 Love and Word Church All rights reserved.',
@@ -131,6 +133,7 @@
     }
     console.log('payloadData', payloadData)
     isConfirmModalShow.value = false
+    router.push('/result')
   }
 </script>
 

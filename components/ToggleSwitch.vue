@@ -25,12 +25,12 @@
       class="slider absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gradient-to-t from-sky-700/50 to-sky-800/50 duration-500 rounded-full before:rounded-full before:absolute before:content-[''] before:w-1/2 before:h-10 before:left-1 before:bottom-1 before:bg-sky-200/10 before:duration-500"
     >
       <div
-        class="absolute flex justify-center items-center gap-x-2 left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/3 text-sky-200"
+        class="absolute flex justify-center items-center gap-x-2 left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/3 text-sky-100"
       >
         <slot name="left-text" />
       </div>
       <div
-        class="absolute flex justify-center items-center gap-x-2 right-1/4 top-1/2 -translate-y-1/2 translate-x-1/3 text-sky-200"
+        class="absolute flex justify-center items-center gap-x-2 right-1/4 top-1/2 -translate-y-1/2 translate-x-1/3 text-sky-100"
       >
         <slot name="right-text" />
       </div>
