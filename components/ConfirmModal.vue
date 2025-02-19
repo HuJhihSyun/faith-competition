@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { onClickOutside } from '@vueuse/core'
+
   type TaskOption = {
     title: string
     id: string
@@ -28,9 +30,15 @@
 
   const emit = defineEmits<ConfirmModalEmits>()
 
+  const popupRef = ref<HTMLElement | null>(null)
+
   const closeModal = () => {
     emit('closeModal')
   }
+
+  onClickOutside(popupRef, () => {
+    closeModal()
+  })
 
   enum TaskOptionId {
     contact = 0,
@@ -69,7 +77,7 @@
 <template>
   <Teleport to="#default-layout">
     <aside class="fixed w-full h-full bg-black/70 flex justify-center items-center z-50">
-      <div class="bg-gradient-to-t from-white to-sky-100 w-11/12 max-w-[500px] py-5 px-5 rounded-xl">
+      <div ref="popupRef" class="bg-gradient-to-t from-white to-sky-100 w-11/12 max-w-[500px] py-5 px-5 rounded-xl">
         <div class="relative flex flex-col justify-center items-center pt-7">
           <div
             class="absolute top-0 left-1/2 -translate-y-3/4 -translate-x-1/2 bg-gradient-to-b from-sky-500 to-sky-700 shadow rounded-full p-4 text-white"

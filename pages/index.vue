@@ -158,7 +158,6 @@
         </div>
         <div class="flex flex-col justify-center items-center mt-8">
           <Button :fn="joinEvent">參加積分</Button>
-          <NuxtLink to="/result" class="text-white text-center text-sm underline mt-4">查看結果</NuxtLink>
         </div>
       </div>
       <div v-else>

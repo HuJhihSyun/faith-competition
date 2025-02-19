@@ -1,7 +1,5 @@
 <script setup lang="ts">
   import Cloud1Svg from '@/assets/images/cloud1.svg?skipsvgo'
-  import Cloud2Svg from '@/assets/images/cloud2.svg?skipsvgo'
-  import Cloud3Svg from '@/assets/images/cloud3.svg?skipsvgo'
   import Cloud4Svg from '@/assets/images/cloud4.svg?skipsvgo'
 </script>
 
@@ -40,6 +38,7 @@
     </div>
     <Cloud1Svg class="absolute top-10 md:top-20 left-10 md:left-20 w-30 cloud1" />
     <Cloud4Svg class="absolute bottom-10 md:bottom-20 right-5 md:right-20 w-50 cloud2" />
+    <MenuDesktop />
   </div>
 </template>
 

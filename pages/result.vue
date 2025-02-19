@@ -66,10 +66,6 @@
       icon: markRaw(PraySvg)
     }
   ]
-
-  const openInfoModal = () => {
-    console.log('openInfoModal')
-  }
 </script>
 
 <template>
@@ -90,7 +86,6 @@
         </TaskProgress>
       </template>
     </div>
-    <NuxtLink to="/info" class="text-white text-center text-sm underline mt-4">查看個人成績</NuxtLink>
   </div>
 </template>
 
