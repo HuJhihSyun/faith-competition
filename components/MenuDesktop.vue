@@ -36,7 +36,7 @@
 
 <template>
   <nav
-    class="navbar hidden sm:block fixed top-1/2 left-2 -translate-y-1/2 bg-gradient-to-t from-sky-700/60 to-sky-800/70 rounded-xl shadow-lg py-2 px-0 z-50"
+    class="navbar fixed top-1/2 left-2 -translate-y-1/2 bg-gradient-to-t from-sky-700/60 to-sky-800/70 rounded-xl shadow-lg py-2 px-0 z-50"
   >
     <ul class="navbar__menu relative">
       <li

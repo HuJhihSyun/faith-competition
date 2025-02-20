@@ -38,7 +38,8 @@
     </div>
     <Cloud1Svg class="absolute top-10 md:top-20 left-10 md:left-20 w-30 cloud1" />
     <Cloud4Svg class="absolute bottom-10 md:bottom-20 right-5 md:right-20 w-50 cloud2" />
-    <MenuDesktop />
+    <MenuDesktop class="hidden sm:block" />
+    <MenuMobile class="block sm:hidden" />
   </div>
 </template>
 
