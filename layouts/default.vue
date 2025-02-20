@@ -1,6 +1,12 @@
 <script setup lang="ts">
   import Cloud1Svg from '@/assets/images/cloud1.svg?skipsvgo'
   import Cloud4Svg from '@/assets/images/cloud4.svg?skipsvgo'
+
+  const isLoading = ref<boolean>(true)
+
+  onMounted(() => {
+    isLoading.value = false
+  })
 </script>
 
 <template>
@@ -8,9 +14,18 @@
     id="default-layout"
     class="relative bg-gradient-to-t from-sky-300 to-sky-800 w-full h-screen flex items-center justify-center overflow-hidden"
   >
-    <div class="relative w-11/12 sm:w-4/5 md:w-3/5 xl:w-1/2 max-w-[1680px] mx-auto z-50">
+    <div class="relative w-11/12 sm:w-4/5 md:w-3/5 xl:w-1/2 max-w-[1680px] mx-auto z-40">
       <slot />
     </div>
+    <transition name="fade">
+      <aside
+        v-if="isLoading"
+        class="fixed top-0 left-0 w-full h-full bg-gradient-to-t from-sky-500/90 to-sky-900/90 z-50 flex flex-col items-center justify-center"
+      >
+        <LoadingWave class="w-10 md:w-20 h-10 md:h-20" />
+        <p class="text-sky-200 sacramento text-xl mt-4">Loading...</p>
+      </aside>
+    </transition>
     <div
       class="absolute w-full h-full bg-[url(@/assets/images/back-cloud.png)] bg-cover bg-no-repeat opacity-5 pointer-events-none z-0"
     ></div>
@@ -112,5 +127,15 @@
     100% {
       transform: translateX(20%);
     }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.2s;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>
