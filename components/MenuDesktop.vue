@@ -41,7 +41,7 @@
     <ul class="navbar__menu relative">
       <li
         v-for="item in NavbarLinkItems"
-        :key="item.title"
+        :key="item.path"
         class="navbar__item last:before:content-[''] last:before:absolute last:before:opacity-0 last:before:z-[-1] last:before:top-0 last:before:left-2 last:before:w-10 last:before:h-10 last:before:lg:w-12 last:before:lg:h-12 last:before:bg-gradient-to-t last:before:from-sky-200 last:before:to-white last:before:rounded-xl last:before:transition-all last:before:duration-300"
       >
         <NuxtLink
