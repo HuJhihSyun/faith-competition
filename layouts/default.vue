@@ -20,7 +20,7 @@
     <transition name="fade">
       <aside
         v-if="isLoading"
-        class="fixed top-0 left-0 w-full h-full bg-gradient-to-t from-sky-500/90 to-sky-900/90 z-50 flex flex-col items-center justify-center"
+        class="fixed top-0 left-0 w-full h-full bg-gradient-to-t from-sky-500/90 to-sky-900/90 z-[60] flex flex-col items-center justify-center"
       >
         <LoadingWave class="w-10 md:w-20 h-10 md:h-20" />
         <p class="text-sky-200 sacramento text-xl mt-4">Loading...</p>

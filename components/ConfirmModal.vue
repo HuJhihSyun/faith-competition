@@ -76,7 +76,7 @@
 
 <template>
   <Teleport to="#default-layout">
-    <aside class="fixed w-full h-full bg-black/70 flex justify-center items-center z-50">
+    <aside class="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50">
       <div ref="popupRef" class="bg-gradient-to-t from-white to-sky-100 w-11/12 max-w-[500px] py-5 px-5 rounded-xl">
         <div class="relative flex flex-col justify-center items-center pt-7">
           <div

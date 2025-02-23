@@ -42,7 +42,7 @@
       <li
         v-for="item in NavbarLinkItems"
         :key="item.path"
-        class="navbar__item last:before:content-[''] last:before:absolute last:before:opacity-0 last:before:z-[-1] last:before:top-0 last:before:left-2 last:before:w-10 last:before:h-10 last:before:lg:w-12 last:before:lg:h-12 last:before:bg-gradient-to-t last:before:from-sky-200 last:before:to-white last:before:rounded-xl last:before:transition-all last:before:duration-300"
+        class="navbar__item last:before:content-[''] last:before:absolute last:before:opacity-0 last:before:z-[-1] last:before:top-0 last:before:bg-gradient-to-t last:before:from-sky-200 last:before:to-white last:before:rounded-xl last:before:transition-all last:before:duration-300"
       >
         <NuxtLink
           :to="{ name: item.path }"
@@ -80,6 +80,20 @@
 
   .navbar {
     &__item {
+      &:last-child {
+        &:before {
+          top: 0;
+          left: 8px;
+          width: 48px;
+          height: 48px;
+
+          @media (max-width: 1024px) {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+
       @for $i from 1 to 12 {
         &:first-child:nth-last-child(#{$i}),
         &:first-child:nth-last-child(#{$i}) ~ li {

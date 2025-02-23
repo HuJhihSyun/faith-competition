@@ -21,7 +21,7 @@
     ogDescription:
       '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
     ogUrl: 'https://www.loveandword.tw/',
-    ogImage: 'https://www.loveandword.tw/resource/images/img.jpg'
+    ogImage: 'images/evangelism-cover.jpg'
   })
 
   type UserInformation = {
@@ -62,7 +62,6 @@
       return
     }
 
-    console.log('userInformation', userInformation)
     currentStep.value += 1
   }
 
@@ -130,16 +129,13 @@
 
   const submitData = async (payloadData: Record<string, any>) => {
     const response = await postLine(payloadData)
-    console.log(response)
   }
 
   const confirmSubmit = (payload: { category: number; minutes?: number }) => {
-    console.log('confirmSubmit', payload)
     const payloadData = {
       ...userInformation.value,
       ...payload
     }
-    console.log('payloadData', payloadData)
     // API
     submitData(payloadData)
       .then(() => {
@@ -163,10 +159,14 @@
         >
           傳道 <span>777</span> 榮耀神
         </h1>
-        <div class="flex flex-col items-center space-y-4 max-w-[400px] mx-auto">
+        <div class="flex flex-col items-center max-w-[400px] mx-auto">
           <InputText :class="{ 'bg-red-400/80': isNameFalse }" v-model="userInformation.name" />
-          <DepartmentSelect :class="{ 'bg-red-400/80': isDepartmentFalse }" v-model="userInformation.department" />
-          <ToggleSwitch v-model="userInformation.gender">
+          <DepartmentSelect
+            class="mt-4"
+            :class="{ 'bg-red-400/80': isDepartmentFalse }"
+            v-model="userInformation.department"
+          />
+          <ToggleSwitch v-model="userInformation.gender" class="mt-4">
             <template #left-text> <FemaleSvg class="w-4 h-4" />姐妹 </template>
             <template #right-text> <MaleSvg class="w-4 h-4" />弟兄 </template>
           </ToggleSwitch>
@@ -179,7 +179,7 @@
         <h3 class="text-white text-xl sm:text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">
           榮耀神項目
         </h3>
-        <main class="flex flex-col items-center space-y-4 max-w-[500px] mx-auto">
+        <main class="flex flex-col items-center max-w-[500px] mx-auto">
           <template v-for="taskOption in taskOptions" :key="taskOption.id">
             <TaskOption @click="showConfirmModal(taskOption.id)">
               <template #title>{{ taskOption.title }}</template>
