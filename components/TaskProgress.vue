@@ -7,6 +7,14 @@
     point: {
       type: Number,
       default: 0
+    },
+    times: {
+      type: Number,
+      default: 0
+    },
+    id: {
+      type: String,
+      default: ''
     }
   })
 
@@ -24,9 +32,10 @@
         <h4 class="flex justify-center items-center text-xs md:text-sm text-sky-200">
           <slot name="icon"></slot>
           <slot name="title"></slot>
+          {{ times }} {{ id === 'pray' ? '分' : '次' }}
         </h4>
         <h5 class="text-xs md:text-sm text-sky-200 tracking-tighter">
-          <span class="hidden md:inline-block">目前累積：</span>{{ point }} 分
+          <span class="hidden md:inline-block">累積：</span>{{ point }} 分
         </h5>
       </div>
       <div class="flex justify-center items-center w-full mt-0.5 md:mt-1">

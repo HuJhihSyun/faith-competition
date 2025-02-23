@@ -1,6 +1,8 @@
 <script setup lang="ts">
+  import { useLineApi } from '@/composables/useLineApi'
+
   useSeoMeta({
-    title: '2025 傳道777榮耀神',
+    title: '傳道 777 榮耀神 | 查詢成績',
     author: '© 2025 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
@@ -18,9 +20,44 @@
     searchName.value = localStorage.getItem('loveWordsEventUserInfo')
       ? JSON.parse(localStorage.getItem('loveWordsEventUserInfo') as string).name
       : ''
+
+    if (searchName.value) {
+      searchUsers()
+        .then((res) => {
+          const result = JSON.parse(res as string)
+
+          if (Object.keys(result).includes('message')) return
+
+          if (Object.keys(result).includes('data')) {
+            informationCardArray.splice(0, informationCardArray.length, ...result.data)
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    }
   })
 
   const isNameFalse = ref<boolean>(false)
+
+  type InformationCard = {
+    id: number
+    name: string
+    department: string
+    gender: boolean
+    score: number
+  }
+
+  const informationCardArray = reactive<InformationCard[]>([])
+  const showAlert = ref<boolean>(false)
+
+  // API
+  const { getUsers } = useLineApi()
+
+  const searchUsers = async () => {
+    const users = await getUsers(searchName.value)
+    return users
+  }
 
   const searchSubmit = () => {
     if (!searchName.value) {
@@ -32,47 +69,30 @@
       return
     }
 
-    console.log('searchName:', searchName.value)
+    // API
+    searchUsers()
+      .then((res) => {
+        const result = JSON.parse(res as string)
+
+        if (Object.keys(result).includes('message')) {
+          informationCardArray.splice(0, informationCardArray.length)
+          showAlert.value = true
+          // alert(`未查詢到名稱為 ${searchName.value} 的成績`)
+          return
+        } else if (Object.keys(result).includes('data')) {
+          informationCardArray.splice(0, informationCardArray.length, ...result.data)
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }
 
-  type InformationCard = {
-    id: string
-    name: string
-    department: string
-    gender: number
-    score: number
-  }
-
-  const informationCardArray: InformationCard[] = [
-    {
-      id: '0002',
-      name: 'cj654vmp',
-      department: '青年部',
-      gender: 1,
-      score: 150
-    },
-    {
-      id: '0003',
-      name: 'cj654vmp',
-      department: 'Campus',
-      gender: 0,
-      score: 28
-    },
-    {
-      id: '0004',
-      name: 'cj654vmp',
-      department: 'Campus',
-      gender: 1,
-      score: 0
-    },
-    {
-      id: '0019',
-      name: 'cj654vmp',
-      department: 'Campus',
-      gender: 0,
-      score: 135
+  watch(searchName, (newVal, oldVal) => {
+    if (newVal !== oldVal) {
+      showAlert.value = false
     }
-  ]
+  })
 </script>
 
 <template>
@@ -88,12 +108,16 @@
       />
     </div>
     <main
+      v-if="informationCardArray.length"
       class="flex flex-col items-center space-y-2 max-w-[500px] mt-6 p-2 bg-gradient-to-t from-sky-700/50 to-sky-800/50 rounded-2xl max-h-[600px] overflow-y-auto mx-auto"
     >
       <template v-for="item in informationCardArray" :key="item.id">
         <InformationCard :name="item.name" :department="item.department" :gender="item.gender" :score="item.score" />
       </template>
     </main>
+    <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-white mt-6">
+      未查詢到名稱為 {{ searchName }} 的成績
+    </h6>
   </div>
 </template>
 

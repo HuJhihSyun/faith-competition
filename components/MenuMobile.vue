@@ -35,7 +35,7 @@
 </script>
 
 <template>
-  <div class="fixed group container w-0 left-2 top-10 justify-start items-center">
+  <div class="fixed group container w-0 left-2 top-10 justify-start items-center z-50">
     <input type="checkbox" id="toggle" class="appearance-none" checked />
     <label
       class="button absolute bg-gradient-to-t from-sky-800/90 to-sky-900/90 z-10 px-4 w-[176px] h-13.5 rounded-xl cursor-pointer flex justify-start items-center transition-all duration-300 overflow-hidden before:absolute before:content-[''] before:w-5 before:h-0.5 before:bg-sky-200 before:rotate-225 before:transition-all before:duration-400 after:absolute after:content-[''] after:w-5 after:h-0.5 after:bg-sky-200 after:rotate-135 after:transition-all after:duration-400 group-[:has(input:checked)]:before:rotate-90 group-[:has(input:checked)]:after:rotate-0 group-[:has(input:checked)]:transition-all group-[:has(input:checked)]:duration-200 group-[:has(input:checked)]:w-13"

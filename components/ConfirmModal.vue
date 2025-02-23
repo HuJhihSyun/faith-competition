@@ -102,7 +102,7 @@
           </h6>
           <div class="flex flex-col md:flex-row justify-between w-full space-y-2 md:space-y-0 md:space-x-3 mt-4">
             <button
-              class="w-full md:w-1/2 py-2 text-sm text-white bg-sky-700 hover:bg-sky-800 rounded-md cursor-pointer transition-all duration-200"
+              class="w-full hidden sm:block md:w-1/2 py-2 text-sm text-white bg-sky-700 hover:bg-sky-800 rounded-md cursor-pointer transition-all duration-200"
               @click="closeModal"
             >
               取消

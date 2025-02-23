@@ -2,14 +2,14 @@
   interface InputTextProps {
     name: string
     department: string
-    gender: number
+    gender: boolean
     score: number
   }
 
   const props = withDefaults(defineProps<InputTextProps>(), {
     name: '',
     department: '',
-    gender: 0,
+    gender: false,
     score: 0
   })
 

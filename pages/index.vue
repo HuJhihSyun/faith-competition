@@ -7,13 +7,13 @@
   import LessonSvg from '@/assets/images/book-open-check.svg?skipsvgo'
   import MeetingSvg from '@/assets/images/handshake.svg?skipsvgo'
   import PraySvg from '@/assets/images/message-circle-heart.svg?skipsvgo'
+  import { useLineApi } from '@/composables/useLineApi'
 
   const router = useRouter()
 
   useSeoMeta({
-    title: '2025 傳道777榮耀神',
+    title: '傳道 777 榮耀神',
     author: '© 2025 Love and Word Church All rights reserved.',
-    copyright: '© 2025 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
       '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
@@ -125,6 +125,14 @@
     isConfirmModalShow.value = false
   }
 
+  // API
+  const { postLine } = useLineApi()
+
+  const submitData = async (payloadData: Record<string, any>) => {
+    const response = await postLine(payloadData)
+    console.log(response)
+  }
+
   const confirmSubmit = (payload: { category: number; minutes?: number }) => {
     console.log('confirmSubmit', payload)
     const payloadData = {
@@ -132,8 +140,15 @@
       ...payload
     }
     console.log('payloadData', payloadData)
-    isConfirmModalShow.value = false
-    router.push('/result')
+    // API
+    submitData(payloadData)
+      .then(() => {
+        isConfirmModalShow.value = false
+        router.push('/result')
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }
 </script>
 
