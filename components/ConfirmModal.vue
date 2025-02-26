@@ -68,6 +68,14 @@
         isFocused.value = true
         return
       }
+
+      if (prayMinutes.value > 999 || prayMinutes.value < 1 || prayMinutes.value % 1 !== 0) {
+        alert('請輸入正常人的禱告時間')
+        prayMinutesRef.value?.focus()
+        isFocused.value = true
+        return
+      }
+
       confirmPayload.minutes = prayMinutes.value
     }
     emit('confirmSubmit', confirmPayload)
@@ -91,7 +99,7 @@
                 ref="prayMinutesRef"
                 v-model="prayMinutes"
                 type="text"
-                class="w-12 px-2 py-1.5 mx-2 text-sm text-slate-600 border border-slate-200 rounded-md text-center"
+                class="w-14 px-2 py-1.5 mx-2 text-sm text-slate-600 border border-slate-200 rounded-md text-center"
                 :class="{ 'outline-red-500': isFocused }"
               />
               <span>分鐘</span>
@@ -100,9 +108,9 @@
           <h6 class="w-full text-sm md:text-base text-slate-600 text-center">
             {{ props.taskOption.content }}
           </h6>
-          <div class="flex flex-col md:flex-row justify-between w-full space-y-2 md:space-y-0 md:space-x-3 mt-4">
+          <div class="flex flex-col md:flex-row justify-between w-full space-y-2 md:space-y-0 mt-4">
             <button
-              class="w-full hidden sm:block md:w-1/2 py-2 text-sm text-white bg-sky-700 hover:bg-sky-800 rounded-md cursor-pointer transition-all duration-200"
+              class="w-full hidden sm:block md:w-1/2 py-2 mr-2 text-sm text-white bg-sky-700 hover:bg-sky-800 rounded-md cursor-pointer transition-all duration-200"
               @click="closeModal"
             >
               取消

@@ -11,7 +11,12 @@
     OLDER = 6
   }
 
-  const Department: Object[] = [
+  type DepartmentType = {
+    id: number
+    name: string
+  }
+
+  const Department: DepartmentType[] = [
     { id: DEPARTMENT.GALAXY, name: '銀河水' },
     { id: DEPARTMENT.SHINING_STAR, name: 'SS' },
     { id: DEPARTMENT.CAMPUS, name: 'Campus' },
