@@ -93,13 +93,13 @@
             <component :is="props.taskOption.icon" class="w-8 h-8" />
           </div>
           <h4 class="text-2xl text-sky-800 font-bold mb-2 flex justify-center items-center whitespace-nowrap">
-            {{ props.taskOption.title }}
+            {{ props.taskOption.id === 'pray' ? '我禱告了' : props.taskOption.title }}
             <div v-if="props.taskOption.id === 'pray'" class="flex justify-center items-center w-full">
               <input
                 ref="prayMinutesRef"
                 v-model="prayMinutes"
                 type="text"
-                class="w-14 px-2 py-1.5 mx-2 text-sm text-slate-600 border border-slate-200 rounded-md text-center"
+                class="w-14 px-2 py-1.5 mx-2 text-sm text-slate-600 border border-sky-600 rounded-md text-center"
                 :class="{ 'outline-red-500': isFocused }"
               />
               <span>分鐘</span>
@@ -110,16 +110,16 @@
           </h6>
           <div class="flex flex-col md:flex-row justify-between w-full space-y-2 md:space-y-0 mt-4">
             <button
-              class="w-full hidden sm:block md:w-1/2 py-2 mr-2 text-sm text-white bg-sky-700 hover:bg-sky-800 rounded-md cursor-pointer transition-all duration-200"
+              class="w-full mt-2 md:mt-0 order-2 md:order-1 md:w-1/2 py-2 mr-2 text-sm text-white bg-slate-500 hover:bg-slate-600 rounded-md cursor-pointer transition-all duration-200"
               @click="closeModal"
             >
               取消
             </button>
             <button
-              class="w-full md:w-1/2 py-2 text-sm text-white bg-sky-700 hover:bg-sky-800 rounded-md cursor-pointer transition-all duration-200"
+              class="w-full order-1 md:order-2 md:w-1/2 py-2 text-sm text-white bg-sky-700 hover:bg-sky-800 rounded-md cursor-pointer transition-all duration-200"
               @click="confirmSubmit"
             >
-              確認
+              送出加分
             </button>
           </div>
         </div>
