@@ -77,7 +77,6 @@
         if (Object.keys(result).includes('message')) {
           informationCardArray.splice(0, informationCardArray.length)
           showAlert.value = true
-          // alert(`未查詢到名稱為 ${searchName.value} 的成績`)
           return
         } else if (Object.keys(result).includes('data')) {
           informationCardArray.splice(0, informationCardArray.length, ...result.data)
@@ -109,10 +108,16 @@
     </div>
     <main
       v-if="informationCardArray.length"
-      class="flex flex-col items-center space-y-2 max-w-[500px] mt-6 p-2 bg-gradient-to-t from-sky-700/50 to-sky-800/50 rounded-2xl max-h-[600px] overflow-y-auto mx-auto"
+      class="flex flex-col items-center max-w-[500px] mt-6 pt-2 px-2 bg-gradient-to-t from-sky-700/50 to-sky-800/50 rounded-2xl max-h-[600px] overflow-y-auto mx-auto"
     >
       <template v-for="item in informationCardArray" :key="item.id">
-        <InformationCard :name="item.name" :department="item.department" :gender="item.gender" :score="item.score" />
+        <InformationCard
+          class="mb-2"
+          :name="item.name"
+          :department="item.department"
+          :gender="item.gender"
+          :score="item.score"
+        />
       </template>
     </main>
     <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-white mt-6">
