@@ -2,16 +2,16 @@
   import { useLineApi } from '@/composables/useLineApi'
 
   useSeoMeta({
-    title: '傳道 777 榮耀神 | 查詢成績',
+    title: '傳道黃金15天 | 查詢成績',
     author: '© 2025 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
-      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
-    ogTitle: '2025 傳道777榮耀神',
+      '攝理人尊稱為「老師」的鄭明析牧師，領受了神交付的使命，帶著二十一年當中在山上修道磨練而向主學習來的時代福音，就在那一天，在神指定的地點，呼喊起新時代話語，宣告了成約攝理歷史的開始。',
+    ogTitle: '傳道黃金15天 | 查詢成績',
     ogDescription:
-      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
+      '攝理人尊稱為「老師」的鄭明析牧師，領受了神交付的使命，帶著二十一年當中在山上修道磨練而向主學習來的時代福音，就在那一天，在神指定的地點，呼喊起新時代話語，宣告了成約攝理歷史的開始。',
     ogUrl: 'https://www.loveandword.tw/',
-    ogImage: 'https://www.loveandword.tw/resource/images/img.jpg'
+    ogImage: 'images/evangelism-cover.jpg'
   })
 
   const searchName = ref<string>('')
@@ -87,7 +87,7 @@
       })
   }
 
-  watch(searchName, (newVal, oldVal) => {
+  watch(searchName, (newVal: string, oldVal: string) => {
     if (newVal !== oldVal) {
       showAlert.value = false
     }

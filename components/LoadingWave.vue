@@ -33,14 +33,14 @@
     width: 100%;
     height: 100%;
     border-radius: 100%;
-    border: 5px solid rgba(129, 212, 250, 0.8);
+    border: 5px solid rgba(255, 255, 255, 0.8);
     border-right: none;
     border-top: none;
     background-clip: padding;
-    box-shadow: inset 0px 0px 10px rgba(225, 245, 254, 0.3);
+    box-shadow: inset 0px 0px 10px rgba(#f47c0e, 0.3);
 
     @media screen and (max-width: 540px) {
-      border: 3px solid rgba(129, 212, 250, 0.8);
+      border: 3px solid rgba(255, 255, 255, 0.8);
     }
   }
 

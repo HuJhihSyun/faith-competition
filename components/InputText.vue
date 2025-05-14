@@ -26,11 +26,11 @@
 
 <template>
   <div
-    class="relative max-h-12 flex w-full mx-auto rounded-full px-5 py-3 overflow-hidden bg-gradient-to-t from-sky-700/50 to-sky-800/50 transition-all duration-300"
+    class="relative max-h-12 flex w-full mx-auto px-5 py-3 overflow-hidden border backdrop-blur-md rounded-md border-b-2 border-r-2 border-[#D97F17] transition-all duration-300"
   >
     <input
       v-model="modelValue"
-      class="text-center grow tracking-wide align-middle placeholder:text-sky-100 text-sky-100 border-none outline-0"
+      class="text-center grow tracking-wide align-middle placeholder:text-[#e7ab67] text-[#d1760f] wen-kai-mono font-bold border-none outline-0"
       type="text"
       :placeholder="notice"
     />

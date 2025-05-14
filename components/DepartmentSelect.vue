@@ -48,7 +48,7 @@
       name="department"
       id="department"
       v-model="modelValue"
-      class="relative flex w-full mx-auto rounded-full px-5 py-3 appearance-none overflow-hidden bg-gradient-to-t from-sky-700/50 to-sky-800/50 text-center text-sky-100 tracking-wide align-middle border-none outline-0 transition-all duration-300"
+      class="relative flex w-full mx-auto px-5 py-3 appearance-none overflow-hidden rounded-md backdrop-blur-md border border-b-2 border-r-2 border-[#D97F17] text-center text-[#d1760f] wen-kai-mono font-bold tracking-wide align-middle outline-0 transition-all duration-300"
       placeholder="請選擇部門"
     >
       <option :value="0" disabled selected>請選擇部門</option>
@@ -56,6 +56,6 @@
         <option :value="item.id">{{ item.name }}</option>
       </template>
     </select>
-    <ChevronSvg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-sky-100 pointer-events-none" />
+    <ChevronSvg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#d1760f] pointer-events-none" />
   </div>
 </template>

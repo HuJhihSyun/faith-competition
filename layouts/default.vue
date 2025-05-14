@@ -1,7 +1,4 @@
 <script setup lang="ts">
-  import Cloud1Svg from '@/assets/images/cloud1.svg?skipsvgo'
-  import Cloud4Svg from '@/assets/images/cloud4.svg?skipsvgo'
-
   const isLoading = ref<boolean>(true)
 
   onMounted(() => {
@@ -12,18 +9,18 @@
 <template>
   <div
     id="default-layout"
-    class="relative bg-gradient-to-t from-sky-300 to-sky-800 w-full h-screen flex items-center justify-center overflow-hidden"
+    class="relative bg-[url(@/assets/images/bg-flower.webp)] bg-cover bg-no-repeat w-full h-screen flex items-center justify-center overflow-hidden"
   >
-    <div class="relative w-11/12 sm:w-4/5 md:w-3/5 xl:w-1/2 max-w-[1680px] mx-auto z-40">
+    <div class="relative w-5/6 sm:w-4/5 md:w-3/5 lg:w-1/2 mx-auto z-40">
       <slot />
     </div>
     <transition name="fade">
       <aside
         v-if="isLoading"
-        class="fixed top-0 left-0 w-full h-full bg-gradient-to-t from-sky-500/90 to-sky-900/90 z-[60] flex flex-col items-center justify-center"
+        class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-[#f47c0e]/30 to-[#d1760f]/70 z-[60] flex flex-col items-center justify-center"
       >
         <LoadingWave class="w-10 md:w-20 h-10 md:h-20" />
-        <p class="text-sky-200 sacramento text-xl mt-4">Loading...</p>
+        <p class="text-white sacramento text-2xl mt-4">Loading...</p>
       </aside>
     </transition>
     <div
@@ -51,9 +48,7 @@
       <div class="spark19"></div>
       <div class="spark20"></div>
     </div>
-    <Cloud1Svg class="absolute top-10 md:top-20 right-10 md:left-20 w-30 cloud1" />
-    <Cloud4Svg class="absolute bottom-10 md:bottom-20 right-5 md:right-20 w-40 md:w-50 cloud2" />
-    <MenuDesktop class="hidden sm:block" />
+    <!-- <MenuDesktop class="hidden sm:block" /> -->
     <MenuMobile class="flex sm:hidden" />
   </div>
 </template>
@@ -87,14 +82,14 @@
 
   .sparkCover {
     [class^='spark'] {
-      background: radial-gradient(ellipse at center, rgba(#42ffff, 1) 0%, rgba(#2525a5, 0) 100%);
-      border-radius: 50%;
-      animation: flash 10s infinite;
+      animation: flash linear 3s infinite;
+      background: linear-gradient(45deg, #fff, #fff);
+      clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
     }
 
     @for $i from 1 through 20 {
       .spark#{$i} {
-        $size: math.random(10) + 5;
+        $size: math.random(20) + 10;
         position: absolute;
         left: math.random() * 100%;
         top: math.random() * 100%;
@@ -108,15 +103,15 @@
   @keyframes flash {
     0% {
       opacity: 0;
-      box-shadow: 0px 0px 5px rgba(#42ffff, 0);
+      transform: scale(1);
     }
     50% {
       opacity: 1;
-      box-shadow: 0px 0px 5px rgba(#42ffff, 1);
+      transform: scale(1.3);
     }
     100% {
       opacity: 0;
-      box-shadow: 0px 0px 5px rgba(#42ffff, 0);
+      transform: scale(1);
     }
   }
 

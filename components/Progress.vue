@@ -120,8 +120,11 @@
           class="absolute top-0 left-0 w-full h-full font-bold text-center leading-[240px] text-8xl drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all duration-1000 ease-in-out z-50"
           :class="textColor"
         >
-          <span class="tracking-tighter">{{ percentage }}</span
-          ><span class="text-5xl ml-2">%</span>
+          <span
+            class="sacramento"
+            :class="{ 'tracking-tighter': percentage < 100, 'tracking-[-5px]': percentage >= 100 }"
+            >{{ percentage }}</span
+          ><span class="sacramento text-5xl ml-2">%</span>
         </div>
         <div
           class="water animate-spin absolute z-20 w-[200%] h-[200%] -left-1/2 transition-all duration-1000 ease-in-out shadow-[0_0_5px_rgba(0,0,0,0.25)]"

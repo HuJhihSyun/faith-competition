@@ -12,14 +12,14 @@
   const router = useRouter()
 
   useSeoMeta({
-    title: '傳道 777 榮耀神',
+    title: '傳道黃金15天 | 1978再出發',
     author: '© 2025 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
-      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
-    ogTitle: '2025 傳道777榮耀神',
+      '神說：「我是阿拉法，我是俄梅戛，是昔在、今在、以後永在的全能者。」講到阿拉法，主角就是神。而攝理，廣義來說，就是神的歷史，在舊約時代，神展開舊約層級的攝理歷史；在新約時代，神展開新約層級的攝理歷史；在現今，神則展開完成級的成約攝理歷史。如此，若要講到攝理的起點，其實就等於是在講神的起點。然而，神昔在、今在、永在，這起點，實在沒辦法說是哪一天，真要說，也只能說，那就是「初」。',
+    ogTitle: '傳道黃金15天 | 1978再出發',
     ogDescription:
-      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
+      '神說：「我是阿拉法，我是俄梅戛，是昔在、今在、以後永在的全能者。」講到阿拉法，主角就是神。而攝理，廣義來說，就是神的歷史，在舊約時代，神展開舊約層級的攝理歷史；在新約時代，神展開新約層級的攝理歷史；在現今，神則展開完成級的成約攝理歷史。如此，若要講到攝理的起點，其實就等於是在講神的起點。然而，神昔在、今在、永在，這起點，實在沒辦法說是哪一天，真要說，也只能說，那就是「初」。',
     ogUrl: 'https://www.loveandword.tw/',
     ogImage: 'images/evangelism-cover.jpg'
   })
@@ -152,14 +152,19 @@
   <div>
     <transition name="fade" mode="out-in">
       <div v-if="!currentStep">
-        <h2 class="text-white text-xl text-center mb-2 sacramento">2025</h2>
-        <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" />
+        <h3 class="text-[#D97F17] font-bold text-2xl text-center mb-1 sacramento">2025</h3>
+        <!-- <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" /> -->
         <h1
-          class="text-white text-3xl sm:text-4xl md:text-5xl text-center mb-10 wen-kai-mono title py-6 px-10 whitespace-nowrap"
+          class="text-[#D97F17] text-4xl sm:text-4xl md:text-5xl text-center wen-kai-mono py-3 lg:py-6 px-10 whitespace-nowrap"
         >
-          傳道 <span>777</span> 榮耀神
+          傳道黃金<span class="inline-block mx-2">15</span>天
         </h1>
-        <div class="flex flex-col items-center max-w-[400px] mx-auto">
+        <h2
+          class="relative text-[#D97F17] font-bold text-xl sm:text-2xl md:text-3xl text-center wen-kai-mono mb-10 before:content-[''] before:w-full before:h-[1px] before:bg-[#D97F17] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0"
+        >
+          <span class="inline-block backdrop-blur-sm px-4 md:px-6">1978 再出發</span>
+        </h2>
+        <div class="flex flex-col items-center mx-auto">
           <InputText :class="{ 'bg-red-400/80': isNameFalse }" v-model="userInformation.name" />
           <DepartmentSelect
             class="mt-4"
@@ -171,8 +176,8 @@
             <template #right-text> <MaleSvg class="w-4 h-4" />弟兄 </template>
           </ToggleSwitch>
         </div>
-        <div class="flex flex-col justify-center items-center mt-8">
-          <Button :fn="joinEvent">參加積分</Button>
+        <div class="flex flex-col justify-center items-center mt-8 pointer-events-none">
+          <Button :fn="joinEvent">施工中...</Button>
         </div>
       </div>
       <div v-else>
@@ -201,17 +206,6 @@
 </template>
 
 <style lang="scss" scoped>
-  .title {
-    -webkit-filter: contrast(2);
-    background: linear-gradient(
-      90deg,
-      rgba(#42e8e0, 0) 0%,
-      rgba(#42e8e0, 0.2) 45%,
-      rgba(#42e8e0, 0.2) 55%,
-      rgba(#42e8e0, 0) 100%
-    );
-  }
-
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.2s;

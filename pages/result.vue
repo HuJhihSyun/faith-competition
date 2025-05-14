@@ -7,16 +7,16 @@
   import { useLineApi } from '@/composables/useLineApi'
 
   useSeoMeta({
-    title: '傳道 777 榮耀神 | 查詢成績',
+    title: '傳道黃金15天 | 查詢成績',
     author: '© 2025 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
-      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
-    ogTitle: '2025 傳道777榮耀神',
+      '主給了老師到首爾前的叮嚀：「就像這樣，一旦你出去傳福音，靈撒但就會使用人惡劣地攻擊並阻擋你。然而，你若傳福音，許多人聽了那話語就會被傳道進來。傳福音時即使撒但妨礙，你也得勝牠們並傳福音吧！下定決心傳福音來展開　神的歷史，如此覺悟並帥氣地做吧！在這裡為了個人、民族、世界禱告吧！」',
+    ogTitle: '傳道黃金15天 | 查詢成績',
     ogDescription:
-      '秉持著聖經真理的教導，效法主愛人如己的精神，讓不同年齡、背景與特質的人，相聚一起學習成長，致力於讓 神所打造的天國理想世界，能夠實現在這地上。',
+      '主給了老師到首爾前的叮嚀：「就像這樣，一旦你出去傳福音，靈撒但就會使用人惡劣地攻擊並阻擋你。然而，你若傳福音，許多人聽了那話語就會被傳道進來。傳福音時即使撒但妨礙，你也得勝牠們並傳福音吧！下定決心傳福音來展開　神的歷史，如此覺悟並帥氣地做吧！在這裡為了個人、民族、世界禱告吧！」',
     ogUrl: 'https://www.loveandword.tw/',
-    ogImage: 'https://www.loveandword.tw/resource/images/img.jpg'
+    ogImage: 'images/evangelism-cover.jpg'
   })
 
   const point = ref<number>(0)
@@ -76,7 +76,7 @@
     const res: any = await getLineResult()
     const result = JSON.parse(res)
 
-    TaskProgresses.forEach((taskProgress) => {
+    TaskProgresses.forEach((taskProgress: { point: any; id: string; times: any }) => {
       taskProgress.point = result.score[taskProgress.id]
       taskProgress.times =
         taskProgress.id === 'pray'
@@ -93,11 +93,11 @@
 
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 class="text-white text-xl text-center mb-2 sacramento">2025</h2>
+    <h3 class="text-[#D97F17] font-bold text-2xl text-center mb-1 sacramento">2025</h3>
     <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" />
     <Progress class="mt-4 md:mt-6" :percentage="percentage" />
     <h3
-      class="mt-4 md:mt-6 text-xl md:text-2xl font-bold bg-gradient-to-t from-cyan-200 to-white inline-block text-transparent bg-clip-text"
+      class="mt-4 md:mt-6 text-xl md:text-2xl font-bold bg-gradient-to-br from-[#d1760f] to-[#f47c0e] inline-block text-transparent bg-clip-text sacramento"
     >
       {{ point }} / {{ goal }}
     </h3>
