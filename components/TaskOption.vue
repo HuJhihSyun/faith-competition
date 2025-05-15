@@ -1,8 +1,10 @@
 <template>
   <button
-    class="relative flex justify-between items-center w-full mx-auto rounded-md px-2 py-1 overflow-hidden border border-b-2 border-r-3 border-[#D97F17] backdrop-blur-xs transition-all duration-300 tracking-wider cursor-pointer group hover:from-white hover:to-sky-200"
+    class="group relative flex justify-between items-center w-full mx-auto rounded-md px-2 py-1 overflow-hidden border border-b-2 border-r-3 border-[#D97F17] hover:border-b-3 hover:border-r-4 backdrop-blur-xs transition-all duration-200 tracking-wider cursor-pointer group hover:from-white hover:to-sky-200"
   >
-    <div class="border border-l-2 border-t-2 border-[#D97F17] rounded p-2 mr-4 text-[#d1760f]">
+    <div
+      class="border border-l-2 border-t-2 border-[#D97F17] group-hover:border-l-3 group-hover:border-t-2 rounded p-2 mr-4 text-[#d1760f] transition-all duration-200"
+    >
       <slot name="icon"></slot>
     </div>
     <div class="w-full flex flex-col items-center justify-center">

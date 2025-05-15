@@ -94,7 +94,11 @@
 <template>
   <div class="flex flex-col items-center justify-center">
     <h3 class="text-[#D97F17] font-bold text-2xl text-center mb-1 sacramento">2025</h3>
-    <img src="@/assets/images/love-word.png" alt="love-word" class="w-40 md:w-60 mx-auto" />
+    <h2
+      class="relative text-[#D97F17] font-normal text-lg sm:text-xl md:text-2xl text-center wen-kai-mono w-2/3 before:content-[''] before:w-full before:h-[1px] before:bg-[#D97F17] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0"
+    >
+      <span class="inline-block backdrop-blur-sm px-4 md:px-6">1978 再出發</span>
+    </h2>
     <Progress class="mt-4 md:mt-6" :percentage="percentage" />
     <h3
       class="mt-4 md:mt-6 text-xl md:text-2xl font-bold bg-gradient-to-br from-[#d1760f] to-[#f47c0e] inline-block text-transparent bg-clip-text sacramento"

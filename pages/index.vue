@@ -152,7 +152,7 @@
   <div>
     <transition name="fade" mode="out-in">
       <div v-if="!currentStep">
-        <h3 class="text-[#D97F17] font-bold text-2xl text-center mb-1 sacramento">2025</h3>
+        <h3 class="text-[#D97F17] font-bold text-2xl text-center sacramento">2025</h3>
         <!-- <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" /> -->
         <h1
           class="text-[#D97F17] text-4xl sm:text-4xl md:text-5xl text-center wen-kai-mono py-3 lg:py-6 px-10 whitespace-nowrap"
