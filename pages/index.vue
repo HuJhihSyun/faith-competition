@@ -176,15 +176,13 @@
             <template #right-text> <MaleSvg class="w-4 h-4" />弟兄 </template>
           </ToggleSwitch>
         </div>
-        <div class="flex flex-col justify-center items-center mt-8 pointer-events-none">
-          <Button :fn="joinEvent">施工中...</Button>
+        <div class="flex flex-col justify-center items-center mt-8">
+          <Button :fn="joinEvent">參與積分</Button>
         </div>
       </div>
       <div v-else>
-        <h3 class="text-white text-xl sm:text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">
-          榮耀神項目
-        </h3>
-        <main class="flex flex-col items-center max-w-[500px] mx-auto">
+        <h3 class="text-[#d1760f] text-2xl md:text-3xl text-center mb-4 wen-kai-mono whitespace-nowrap">榮耀神項目</h3>
+        <main class="flex flex-col items-center mx-auto gap-2">
           <template v-for="taskOption in taskOptions" :key="taskOption.id">
             <TaskOption @click="showConfirmModal(taskOption.id)">
               <template #title>{{ taskOption.title }}</template>

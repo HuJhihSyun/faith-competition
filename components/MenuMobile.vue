@@ -62,7 +62,7 @@
             <NuxtLink
               :to="{ name: item.path }"
               class="text-[#d1760f] text-xl w-10 h-10 flex justify-center items-center rounded-md transition-all duration-500 no-underline"
-              :class="{ 'text-[#d1760f] bg-gradient-to-b from-white to-[#d1760f]/50': isActive(item.path) }"
+              :class="{ 'text-[#d1760f] bg-gradient-to-b from-white/50 to-[#d1760f]/50': isActive(item.path) }"
               @click="handleToggle"
             >
               <component :is="item.icon" class="w-5 h-5" />

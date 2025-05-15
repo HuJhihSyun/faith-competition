@@ -1,20 +1,20 @@
 <template>
   <button
-    class="relative mt-2 flex justify-between items-center w-full mx-auto rounded-full px-3 py-2 overflow-hidden bg-gradient-to-t from-white/80 to-sky-200/50 transition-all duration-300 tracking-wider cursor-pointer group hover:from-white hover:to-sky-200"
+    class="relative flex justify-between items-center w-full mx-auto rounded-md px-2 py-1 overflow-hidden border border-b-2 border-r-3 border-[#D97F17] backdrop-blur-xs transition-all duration-300 tracking-wider cursor-pointer group hover:from-white hover:to-sky-200"
   >
-    <div class="bg-gradient-to-t from-white to-sky-200 shadow rounded-full p-2 mr-4 text-sky-700">
+    <div class="border border-l-2 border-t-2 border-[#D97F17] rounded p-2 mr-4 text-[#d1760f]">
       <slot name="icon"></slot>
     </div>
     <div class="w-full flex flex-col items-center justify-center">
       <div class="w-full flex justify-between items-center">
-        <h4 class="text-lg text-sky-800 font-bold">
+        <h4 class="text-lg text-[#d1760f] font-bold">
           <slot name="title"></slot>
         </h4>
-        <h5 class="text-xs text-sky-700 font-bold">
+        <h5 class="text-xs text-[#d1760f] font-bold">
           <slot name="subtitle"></slot>
         </h5>
       </div>
-      <h6 class="w-full text-xs md:text-sm text-slate-600 text-left">
+      <h6 class="w-full text-xs md:text-sm text-[#d1760f]/90 tracking-tight text-left">
         <slot name="content"></slot>
       </h6>
     </div>

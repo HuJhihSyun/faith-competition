@@ -48,7 +48,7 @@
       name="department"
       id="department"
       v-model="modelValue"
-      class="relative flex w-full mx-auto px-5 py-3 appearance-none overflow-hidden rounded-md backdrop-blur-md border border-b-2 border-r-2 border-[#D97F17] text-center text-[#d1760f] wen-kai-mono font-bold tracking-wide align-middle outline-0 transition-all duration-300"
+      class="relative flex w-full mx-auto px-5 py-3 appearance-none overflow-hidden rounded-md backdrop-blur-md border border-b-2 border-r-2 border-[#D97F17] text-center text-[#d1760f] wen-kai-mono font-bold tracking-wide align-middle outline-0 transition-all duration-300 leading-[1.3]"
       placeholder="請選擇部門"
     >
       <option :value="0" disabled selected>請選擇部門</option>
