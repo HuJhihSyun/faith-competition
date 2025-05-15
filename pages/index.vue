@@ -76,37 +76,37 @@
 
   const taskOptions: TaskOptions[] = [
     {
-      title: '傳道',
+      title: '連結',
       id: 'contact',
-      subtitle: '3 分 / 每 1 人',
+      subtitle: '7 分 / 每 1 人',
       content: '以「留到聯絡方式」或「生命填寫夢想表單」為標準',
       icon: markRaw(ContactSvg)
     },
     {
       title: '講義',
       id: 'presentation',
-      subtitle: '5 分 / 每 1 次',
+      subtitle: '10 分 / 每 1 次',
       content: '由講師填寫',
       icon: markRaw(PresentationSvg)
     },
     {
       title: '聽課',
       id: 'lesson',
-      subtitle: '5 分 / 每 1 次',
+      subtitle: '10 分 / 每 1 次',
       content: '由生命管理者填寫',
       icon: markRaw(LessonSvg)
     },
     {
       title: '見面',
       id: 'meeting',
-      subtitle: '1 分 / 每 1 人',
+      subtitle: '3 分 / 每 1 人',
       content: '「陪跑」新生聽課、運動、吃飯、線上通話或固禱皆可',
       icon: markRaw(MeetingSvg)
     },
     {
       title: '禱告',
       id: 'pray',
-      subtitle: '1 分 / 每 5 分鐘',
+      subtitle: '3 分 / 每 5 分鐘',
       content: '為「傳道生命」、「宣教目標」之禱告皆可計入',
       icon: markRaw(PraySvg)
     }

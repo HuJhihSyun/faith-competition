@@ -96,7 +96,7 @@
 
 <template>
   <div>
-    <h3 class="text-white text-xl sm:text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">查詢成績</h3>
+    <h3 class="text-[#D97F17] text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">查詢成績</h3>
     <div class="max-w-[500px] mx-auto">
       <InputText
         v-model="searchName"
@@ -108,7 +108,7 @@
     </div>
     <main
       v-if="informationCardArray.length"
-      class="flex flex-col items-center max-w-[500px] mt-6 pt-2 px-2 bg-gradient-to-t from-sky-700/50 to-sky-800/50 rounded-2xl max-h-[600px] overflow-y-auto mx-auto"
+      class="flex flex-col items-center max-w-[500px] mt-6 pt-2 px-2 border border-b-2 border-r-2 border-[#D97F17] backdrop-blur-xs rounded-md max-h-[70vh] overflow-y-auto mx-auto"
     >
       <template v-for="item in informationCardArray" :key="item.id">
         <InformationCard
@@ -120,7 +120,7 @@
         />
       </template>
     </main>
-    <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-white mt-6">
+    <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-[#d1760f] wen-kai-mono mt-6">
       未查詢到名稱為 {{ searchName }} 的成績
     </h6>
   </div>

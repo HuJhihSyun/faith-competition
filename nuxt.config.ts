@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
   app: {
-    baseURL: process.env.NODE_ENV === 'production' ? '/evangelism777/' : '/',
+    baseURL: process.env.NODE_ENV === 'production' ? '/evangelism1978/' : '/',
     buildAssetsDir: '/static/',
 
     head: {

@@ -48,7 +48,7 @@
       <div class="spark19"></div>
       <div class="spark20"></div>
     </div>
-    <!-- <MenuDesktop class="hidden sm:block" /> -->
+    <MenuDesktop class="hidden sm:block" />
     <MenuMobile class="flex sm:hidden" />
   </div>
 </template>

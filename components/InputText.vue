@@ -36,7 +36,7 @@
     />
     <button
       v-if="buttonName"
-      class="absolute right-2 top-1/2 -translate-y-1/2 h-9 text-sm md:text-base px-4 md:px-6 py-2 flex justify-center items-center bg-gradient-to-t from-white to-sky-200 hover:from-sky-100 hover:to-sky-300 active:from-sky-200 active:to-sky-400 text-sky-700 active:text-sky-900 rounded-full cursor-pointer"
+      class="absolute right-1 top-1/2 -translate-y-1/2 h-9 text-sm md:text-base px-4 md:px-6 py-2 flex justify-center items-center bg-gradient-to-br from-[#d1760f]/10 to-[#d1760f]/50 hover:from-[#d1760f]/30 hover:to-[#d1760f]/70 active:from-[#d1760f]/50 active:to-[#d1760f]/80 text-[#d1760f] rounded cursor-pointer wen-kai-mono"
       @click="fn"
     >
       {{ buttonName }}

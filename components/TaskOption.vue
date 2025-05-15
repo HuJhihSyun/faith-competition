@@ -14,7 +14,7 @@
           <slot name="subtitle"></slot>
         </h5>
       </div>
-      <h6 class="w-full text-xs md:text-sm text-[#d1760f]/90 tracking-tight text-left">
+      <h6 class="w-full text-xs md:text-sm text-[#d1760f]/90 tracking-tight text-left line-clamp-1">
         <slot name="content"></slot>
       </h6>
     </div>

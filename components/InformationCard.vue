@@ -21,14 +21,20 @@
   const empty = computed(() => {
     return 5 - rank.value
   })
+
+  const formatScore = computed(() => {
+    return Math.floor(props.score)
+  })
 </script>
 
 <template>
-  <div class="w-full bg-gradient-to-t from-white to-sky-100/90 py-4 px-5 rounded-xl">
+  <div
+    class="relative w-full border border-b-2 border-r-2 border-[#D97F17] py-4 px-5 rounded before:content-[''] before:w-full before:h-full before:bg-[#D97F17]/10 hover:before:bg-[#D97F17]/15 before:absolute before:top-0 before:-translate-y-[5px] before:left-0 before:-translate-x-[5px] before:rounded before:-z-10"
+  >
     <div class="flex justify-between items-center">
-      <h4 class="text-base text-sky-700 font-bold">
+      <h4 class="text-base text-[#d1760f] font-bold wen-kai-mono">
         {{ name }}
-        <span class="text-sm text-slate-400 font-normal">{{ gender ? '弟兄' : '姐妹' }}</span>
+        <span class="text-sm text-[#d1760f]/90 font-normal wen-kai-mono">{{ gender ? '弟兄' : '姐妹' }}</span>
       </h4>
       <ClientOnly>
         <div class="flex justify-between items-center">
@@ -50,13 +56,13 @@
       </ClientOnly>
     </div>
     <div class="flex justify-between items-center mt-1">
-      <h6 class="text-xs sm:text-sm text-slate-600">
+      <h6 class="text-xs sm:text-sm text-[#d1760f] wen-kai-mono">
         <span>所屬部門：</span>
         {{ department }}
       </h6>
-      <h6 class="text-xs sm:text-sm text-slate-600">
+      <h6 class="text-xs sm:text-sm text-[#d1760f] wen-kai-mono">
         <span>累積分數：</span>
-        {{ score }}
+        {{ formatScore }}
       </h6>
     </div>
   </div>

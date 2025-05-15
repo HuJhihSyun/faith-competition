@@ -7,102 +7,62 @@
   })
 
   const borderColor = computed(() => {
-    if (props.percentage < 15) {
-      return 'border-cyan-200'
-    } else if (props.percentage < 30) {
-      return 'border-teal-200'
-    } else if (props.percentage < 45) {
-      return 'border-emerald-100'
-    } else if (props.percentage < 60) {
-      return 'border-green-200'
+    if (props.percentage < 35) {
+      return 'border-yellow-500'
     } else if (props.percentage < 75) {
-      return 'border-lime-100'
-    } else if (props.percentage < 90) {
-      return 'border-yellow-100'
-    } else if (props.percentage >= 90) {
-      return 'border-yellow-200'
+      return 'border-amber-500'
+    } else if (props.percentage >= 75) {
+      return 'border-orange-500'
     } else {
-      return 'border-white'
+      return 'border-[#d1760f]'
     }
   })
 
   const shadowColor = computed(() => {
-    if (props.percentage < 15) {
-      return 'shadow-cyan-200'
-    } else if (props.percentage < 30) {
-      return 'shadow-teal-200'
-    } else if (props.percentage < 45) {
-      return 'shadow-emerald-200'
-    } else if (props.percentage < 60) {
-      return 'shadow-green-200'
+    if (props.percentage < 35) {
+      return 'shadow-yellow-500'
     } else if (props.percentage < 75) {
-      return 'shadow-lime-300'
-    } else if (props.percentage < 90) {
-      return 'shadow-yellow-300'
-    } else if (props.percentage >= 90) {
-      return 'shadow-yellow-400'
+      return 'shadow-amber-500'
+    } else if (props.percentage >= 75) {
+      return 'shadow-orange-400'
     } else {
-      return 'shadow-white'
+      return 'shadow-[#d1760f]'
     }
   })
 
   const waterColor = computed(() => {
-    if (props.percentage < 15) {
-      return 'bg-cyan-300/90'
-    } else if (props.percentage < 30) {
-      return 'bg-teal-300/90'
-    } else if (props.percentage < 45) {
-      return 'bg-emerald-300/90'
-    } else if (props.percentage < 60) {
-      return 'bg-green-300'
+    if (props.percentage < 35) {
+      return 'bg-yellow-500/80'
     } else if (props.percentage < 75) {
-      return 'bg-lime-300'
-    } else if (props.percentage < 90) {
-      return 'bg-yellow-300/90'
-    } else if (props.percentage >= 90) {
-      return 'bg-yellow-300'
+      return 'bg-amber-500/80'
+    } else if (props.percentage >= 75) {
+      return 'bg-orange-400'
     } else {
-      return 'bg-white'
+      return 'bg-[#d1760f]/80'
     }
   })
 
   const waterShadowColor = computed(() => {
-    if (props.percentage < 15) {
-      return 'shadow-cyan-400'
-    } else if (props.percentage < 30) {
-      return 'shadow-teal-400'
-    } else if (props.percentage < 45) {
-      return 'shadow-emerald-400'
-    } else if (props.percentage < 60) {
-      return 'shadow-green-400'
+    if (props.percentage < 35) {
+      return 'shadow-yellow-500'
     } else if (props.percentage < 75) {
-      return 'shadow-lime-400'
-    } else if (props.percentage < 90) {
-      return 'shadow-yellow-400'
-    } else if (props.percentage >= 90) {
+      return 'shadow-amber-500'
+    } else if (props.percentage >= 75) {
       return 'shadow-orange-400'
     } else {
-      return 'shadow-white'
+      return 'shadow-[#d1760f]'
     }
   })
 
   const textColor = computed(() => {
-    if (props.percentage < 15) {
-      return 'bg-gradient-to-b from-cyan-300 to-white inline-block text-transparent bg-clip-text'
-    } else if (props.percentage < 30) {
-      return 'bg-gradient-to-b from-teal-300 to-white inline-block text-transparent bg-clip-text'
-    } else if (props.percentage < 45) {
-      return 'bg-gradient-to-b from-emerald-300 to-white inline-block text-transparent bg-clip-text'
-    } else if (props.percentage < 60) {
-      return 'bg-gradient-to-b from-green-300 to-white inline-block text-transparent bg-clip-text'
+    if (props.percentage < 35) {
+      return 'bg-gradient-to-b from-yellow-500 to-yellow-100 inline-block text-transparent bg-clip-text'
     } else if (props.percentage < 75) {
-      return 'bg-gradient-to-b from-lime-200 to-white inline-block text-transparent bg-clip-text'
-    } else if (props.percentage < 90) {
-      return 'bg-gradient-to-b from-yellow-100 to-white inline-block text-transparent bg-clip-text'
-    } else if (props.percentage >= 90) {
-      return 'bg-gradient-to-b from-yellow-100 to-white inline-block text-transparent bg-clip-text'
+      return 'bg-gradient-to-b from-amber-400 to-amber-100 inline-block text-transparent bg-clip-text'
+    } else if (props.percentage >= 75) {
+      return 'bg-gradient-to-b from-orange-300 to-orange-100 inline-block text-transparent bg-clip-text'
     } else {
-      return 'text-white'
+      return 'text-[#d1760f]'
     }
   })
 </script>
@@ -110,7 +70,7 @@
 <template>
   <div>
     <div
-      class="progress relative rounded-full w-[250px] h-[250px] border-4 shadow-[0_0_15px_rgba(0,0,0,0.25)] transition-all duration-1000 ease-in-out"
+      class="progress relative rounded-full w-[250px] h-[250px] border-4 shadow-[0_0_2px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out"
       :class="[borderColor, shadowColor]"
     >
       <div
@@ -127,12 +87,12 @@
           ><span class="sacramento text-5xl ml-2">%</span>
         </div>
         <div
-          class="water animate-spin absolute z-20 w-[200%] h-[200%] -left-1/2 transition-all duration-1000 ease-in-out shadow-[0_0_5px_rgba(0,0,0,0.25)]"
+          class="water animate-spin absolute z-20 w-[200%] h-[200%] -left-1/2 transition-all duration-1000 ease-in-out shadow-[0_0_2px_rgba(0,0,0,0.2)]"
           :class="[waterColor, waterShadowColor]"
           :style="{ top: 100 - percentage + '%' }"
         ></div>
         <div
-          class="absolute bg-black/10 -top-[120%] -left-[120%] z-30 w-[200%] h-[200%] rotate-45 rounded-full transition-all duration-1000 ease-in-out"
+          class="absolute bg-black/5 -top-[120%] -left-[120%] z-30 w-[200%] h-[200%] rotate-45 rounded-full transition-all duration-1000 ease-in-out"
         ></div>
       </div>
     </div>

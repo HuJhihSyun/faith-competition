@@ -21,7 +21,7 @@
 
   const point = ref<number>(0)
   const percentage = ref<number>(0)
-  const goal = ref<number>(777)
+  const goal = ref<number>(1978)
 
   type TaskProgress = {
     title: string
@@ -94,14 +94,14 @@
 <template>
   <div class="flex flex-col items-center justify-center">
     <h3 class="text-[#D97F17] font-bold text-2xl text-center mb-1 sacramento">2025</h3>
-    <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" />
+    <img src="@/assets/images/love-word.png" alt="love-word" class="w-40 md:w-60 mx-auto" />
     <Progress class="mt-4 md:mt-6" :percentage="percentage" />
     <h3
       class="mt-4 md:mt-6 text-xl md:text-2xl font-bold bg-gradient-to-br from-[#d1760f] to-[#f47c0e] inline-block text-transparent bg-clip-text sacramento"
     >
       {{ point }} / {{ goal }}
     </h3>
-    <div class="mt-6 md:mt-10 w-full grid gap-2 grid-cols-2 lg:grid-cols-3">
+    <div class="mt-4 md:mt-8 w-full grid gap-2 grid-cols-2 xl:grid-cols-3">
       <template v-for="TaskProgress in TaskProgresses" :key="TaskProgress.id">
         <TaskProgress :summary="point" :point="TaskProgress.point" :times="TaskProgress.times" :id="TaskProgress.id">
           <template #title>{{ TaskProgress.title }}</template>
