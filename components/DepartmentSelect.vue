@@ -48,7 +48,7 @@
       name="department"
       id="department"
       v-model="modelValue"
-      class="relative flex w-full mx-auto rounded-full px-5 py-3 appearance-none overflow-hidden bg-gradient-to-t from-sky-700/50 to-sky-800/50 text-center text-sky-100 tracking-wide align-middle border-none outline-0 transition-all duration-300"
+      class="atomic-input relative flex w-full mx-auto rounded-full px-5 py-3 appearance-none overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300/60 text-center text-gray-500 tracking-wide align-middle border-none outline-0 transition-all duration-300"
       placeholder="請選擇部門"
     >
       <option :value="0" disabled selected>請選擇部門</option>
@@ -56,6 +56,14 @@
         <option :value="item.id">{{ item.name }}</option>
       </template>
     </select>
-    <ChevronSvg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-sky-100 pointer-events-none" />
+    <ChevronSvg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .atomic-input {
+    box-shadow:
+      -4px -4px 8px rgba(#fff, 0.6),
+      inset 8px 8px 12px rgba(163, 177, 198, 0.3);
+  }
+</style>

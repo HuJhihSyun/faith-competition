@@ -153,11 +153,11 @@
     <transition name="fade" mode="out-in">
       <div v-if="!currentStep">
         <h2 class="text-white text-xl text-center mb-2 sacramento">2025</h2>
-        <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" />
+        <!-- <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" /> -->
         <h1
           class="text-white text-3xl sm:text-4xl md:text-5xl text-center mb-10 wen-kai-mono title py-6 px-10 whitespace-nowrap"
         >
-          傳道 <span>777</span> 榮耀神
+          十月榮耀神
         </h1>
         <div class="flex flex-col items-center max-w-[400px] mx-auto">
           <InputText :class="{ 'bg-red-400/80': isNameFalse }" v-model="userInformation.name" />

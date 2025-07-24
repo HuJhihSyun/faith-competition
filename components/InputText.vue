@@ -26,11 +26,11 @@
 
 <template>
   <div
-    class="relative max-h-12 flex w-full mx-auto rounded-full px-5 py-3 overflow-hidden bg-gradient-to-t from-sky-700/50 to-sky-800/50 transition-all duration-300"
+    class="atomic-input relative max-h-12 flex w-full mx-auto rounded-full px-5 py-3 overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300/60 transition-all duration-300"
   >
     <input
       v-model="modelValue"
-      class="text-center grow tracking-wide align-middle placeholder:text-sky-100 text-sky-100 border-none outline-0"
+      class="text-center grow tracking-wide align-middle placeholder:text-sky-100 text-gray-500 border-none outline-0"
       type="text"
       :placeholder="notice"
     />
@@ -43,3 +43,11 @@
     </button>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .atomic-input {
+    box-shadow:
+      -4px -4px 8px rgba(#fff, 0.6),
+      inset 8px 8px 12px rgba(163, 177, 198, 0.3);
+  }
+</style>

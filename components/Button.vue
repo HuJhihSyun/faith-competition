@@ -14,7 +14,8 @@
 <template>
   <button
     v-if="!link"
-    class="bg-gradient-to-bl from-yellow-400 to-yellow-700 hover:bg-gradient-to-b flex justify-center items-center px-10 py-3 text-white rounded-full transition-all duration-200 tracking-wider cursor-pointer whitespace-nowrap"
+    class="atomic-button bg-gray-200 hover:bg-gradient-to-b flex justify-center items-center px-10 py-3 text-gray-500 rounded-full transition-all duration-200 tracking-wider cursor-pointer whitespace-nowrap"
+    style=""
     @click="fn"
   >
     <slot></slot>
@@ -23,3 +24,11 @@
     <slot></slot>
   </a>
 </template>
+
+<style lang="scss" scoped>
+  .atomic-button {
+    box-shadow:
+      3px 3px 12px rgba(163, 177, 198, 0.4),
+      -4px -4px 8px rgba(#fff, 0.6);
+  }
+</style>
