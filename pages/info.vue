@@ -96,7 +96,11 @@
 
 <template>
   <div>
-    <h3 class="text-white text-xl sm:text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">查詢成績</h3>
+    <h3
+      class="text-gray-500 text-xl sm:text-2xl md:text-3xl text-center pb-5 mb-10 whitespace-nowrap tracking-wider shadow-[0px_15px_20px_-20px_rgba(0,0,0,0.3)]"
+    >
+      查詢成績
+    </h3>
     <div class="max-w-[500px] mx-auto">
       <InputText
         v-model="searchName"
@@ -108,7 +112,7 @@
     </div>
     <main
       v-if="informationCardArray.length"
-      class="flex flex-col items-center max-w-[500px] mt-6 pt-2 px-2 bg-gradient-to-t from-sky-700/50 to-sky-800/50 rounded-2xl max-h-[600px] overflow-y-auto mx-auto"
+      class="info-search flex flex-col items-center max-w-[500px] mt-6 pt-2 pl-2 pr-1 bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl max-h-[500px] overflow-y-auto mx-auto"
     >
       <template v-for="item in informationCardArray" :key="item.id">
         <InformationCard
@@ -120,10 +124,17 @@
         />
       </template>
     </main>
-    <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-white mt-6">
+    <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-gray-500 mt-6">
       未查詢到名稱為 {{ searchName }} 的成績
     </h6>
   </div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+  .info-search {
+    box-shadow:
+      -4px -4px 8px rgba(#fff, 0.6),
+      2px 1px 0px rgba(163, 177, 198, 0.3),
+      inset 8px 6px 8px rgba(163, 177, 198, 0.3);
+  }
+</style>

@@ -152,10 +152,10 @@
   <div>
     <transition name="fade" mode="out-in">
       <div v-if="!currentStep">
-        <h2 class="text-white text-xl text-center mb-2 sacramento">2025</h2>
-        <!-- <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" /> -->
+        <h2 class="text-gray-400 text-xl text-center mb-2 ubuntu tracking-wider">2025</h2>
+        <h2 class="text-gray-400 text-2xl text-center mb-6 ubuntu tracking-wider">love and word</h2>
         <h1
-          class="text-white text-3xl sm:text-4xl md:text-5xl text-center mb-10 wen-kai-mono title py-6 px-10 whitespace-nowrap"
+          class="text-gray-500 text-3xl sm:text-4xl md:text-5xl text-center mb-12 tracking-widest pb-8 px-10 whitespace-nowrap shadow-[0px_25px_30px_-35px_rgba(0,0,0,0.4)]"
         >
           十月榮耀神
         </h1>
@@ -176,7 +176,9 @@
         </div>
       </div>
       <div v-else>
-        <h3 class="text-white text-xl sm:text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">
+        <h3
+          class="text-gray-500 text-xl sm:text-2xl md:text-3xl text-center pb-5 mb-10 whitespace-nowrap tracking-wider shadow-[0px_15px_20px_-20px_rgba(0,0,0,0.3)]"
+        >
           榮耀神項目
         </h3>
         <main class="flex flex-col items-center max-w-[500px] mx-auto">
@@ -201,17 +203,6 @@
 </template>
 
 <style lang="scss" scoped>
-  .title {
-    -webkit-filter: contrast(2);
-    background: linear-gradient(
-      90deg,
-      rgba(#42e8e0, 0) 0%,
-      rgba(#42e8e0, 0.2) 45%,
-      rgba(#42e8e0, 0.2) 55%,
-      rgba(#42e8e0, 0) 100%
-    );
-  }
-
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.2s;

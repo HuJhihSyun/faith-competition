@@ -24,9 +24,9 @@
 </script>
 
 <template>
-  <div class="w-full bg-gradient-to-t from-white to-sky-100/90 py-4 px-5 rounded-xl">
+  <div class="information-card w-full bg-gradient-to-br from-gray-200 to-gray-200 py-4 px-5 rounded-xl">
     <div class="flex justify-between items-center">
-      <h4 class="text-base text-sky-700 font-bold">
+      <h4 class="text-base text-gray-600 font-bold">
         {{ name }}
         <span class="text-sm text-slate-400 font-normal">{{ gender ? '弟兄' : '姐妹' }}</span>
       </h4>
@@ -61,3 +61,11 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .information-card {
+    box-shadow:
+      2px 2px 4px rgba(163, 177, 198, 0.4),
+      -2px -2px 2px rgba(#fff, 0.6);
+  }
+</style>

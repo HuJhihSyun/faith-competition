@@ -93,7 +93,7 @@
 
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 class="text-white text-xl text-center mb-2 sacramento">2025</h2>
+    <h2 class="text-white text-xl text-center mb-2 ubuntu">2025</h2>
     <img src="@/assets/images/love-word.png" alt="love-word" class="w-50 md:w-60 mx-auto mb-4" />
     <Progress class="mt-4 md:mt-6" :percentage="percentage" />
     <h3
