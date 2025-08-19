@@ -81,10 +81,10 @@
           :class="textColor"
         >
           <span
-            class="sacramento"
+            class="montserrat"
             :class="{ 'tracking-tighter': percentage < 100, 'tracking-[-5px]': percentage >= 100 }"
             >{{ percentage }}</span
-          ><span class="sacramento text-5xl ml-2">%</span>
+          ><span class="montserrat text-5xl ml-2">%</span>
         </div>
         <div
           class="water animate-spin absolute z-20 w-[200%] h-[200%] -left-1/2 transition-all duration-1000 ease-in-out shadow-[0_0_2px_rgba(0,0,0,0.2)]"

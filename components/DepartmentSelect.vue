@@ -52,9 +52,7 @@
       placeholder="請選擇部門"
     >
       <option :value="0" disabled selected>請選擇部門</option>
-      <template v-for="item in Department">
-        <option :value="item.id">{{ item.name }}</option>
-      </template>
+      <option v-for="item in Department" :key="item.id" :value="item.id">{{ item.name }}</option>
     </select>
     <ChevronSvg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#d1760f] pointer-events-none" />
   </div>

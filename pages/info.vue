@@ -2,12 +2,12 @@
   import { useLineApi } from '@/composables/useLineApi'
 
   useSeoMeta({
-    title: '傳道黃金15天 | 查詢成績',
+    title: '光輝十月 | 查詢成績',
     author: '© 2025 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
       '攝理人尊稱為「老師」的鄭明析牧師，領受了神交付的使命，帶著二十一年當中在山上修道磨練而向主學習來的時代福音，就在那一天，在神指定的地點，呼喊起新時代話語，宣告了成約攝理歷史的開始。',
-    ogTitle: '傳道黃金15天 | 查詢成績',
+    ogTitle: '光輝十月 | 查詢成績',
     ogDescription:
       '攝理人尊稱為「老師」的鄭明析牧師，領受了神交付的使命，帶著二十一年當中在山上修道磨練而向主學習來的時代福音，就在那一天，在神指定的地點，呼喊起新時代話語，宣告了成約攝理歷史的開始。',
     ogUrl: 'https://www.loveandword.tw/',

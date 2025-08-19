@@ -20,7 +20,7 @@
         class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-[#f47c0e]/30 to-[#d1760f]/70 z-[60] flex flex-col items-center justify-center"
       >
         <LoadingWave class="w-10 md:w-20 h-10 md:h-20" />
-        <p class="text-white sacramento text-2xl mt-4">Loading...</p>
+        <p class="text-white montserrat text-2xl mt-4">Loading...</p>
       </aside>
     </transition>
     <div
@@ -56,10 +56,10 @@
 <style lang="scss">
   @use 'sass:math';
 
-  @import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=Sacramento&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=Montserrat&display=swap');
 
-  .sacramento {
-    font-family: 'Sacramento', sans-serif;
+  .montserrat {
+    font-family: 'Montserrat', sans-serif;
   }
 
   .wen-kai-mono {

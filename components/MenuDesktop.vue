@@ -109,15 +109,21 @@
             &:nth-child(#{$j}):hover {
               ~ li:last-child:before {
                 @include gooeyEffect($j);
-                top: (100% / $i) * ($j - 1);
-                animation: gooeyEffect-#{$j} 300ms 1;
+
+                & {
+                  top: calc(100% / $i) * ($j - 1);
+                  animation: gooeyEffect-#{$j} 300ms 1;
+                }
               }
             }
           }
           &:last-child:hover:before {
             @include gooeyEffect($i);
-            top: (100% / $i) * ($i - 1);
-            animation: gooeyEffect-#{$i} 300ms 1;
+
+            & {
+              top: calc(100% / $i) * ($i - 1);
+              animation: gooeyEffect-#{$i} 300ms 1;
+            }
           }
         }
       }
