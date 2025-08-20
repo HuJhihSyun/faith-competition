@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import PencilSvg from '@/assets/images/pencil-line.svg?skipsvgo'
   import ChartSvg from '@/assets/images/chart.svg?skipsvgo'
-  import SearchSvg from '@/assets/images/search.svg?skipsvgo'
+  import CalendarSvg from '@/assets/images/calendar.svg?skipsvgo'
+  import UserEditSvg from '@/assets/images/user-edit.svg?skipsvgo'
 
   const route = useRoute()
 
@@ -17,19 +17,19 @@
 
   const NavbarLinkItems: NavbarLinkItem[] = [
     {
-      title: '填寫',
+      title: '我的日曆',
       path: 'index',
-      icon: PencilSvg
+      icon: CalendarSvg
     },
     {
-      title: '查看總分',
+      title: '部門排名',
       path: 'result',
       icon: ChartSvg
     },
     {
-      title: '查詢成績',
-      path: 'info',
-      icon: SearchSvg
+      title: '資料填寫',
+      path: 'setting',
+      icon: UserEditSvg
     }
   ]
 </script>

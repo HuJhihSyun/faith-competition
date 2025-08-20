@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import ChevronSvg from '@/assets/images/chevron-down.svg?skipsvgo'
+  import AwardSvg from '@/assets/images/award.svg?skipsvgo'
 
   const router = useRouter()
 
@@ -55,7 +56,7 @@
     >
       <span class="inline-block backdrop-blur-sm px-4 md:px-6 tracking-widest">無限榮耀神</span>
     </h2>
-    <section class="hidden sm:flex flex-col items-center mx-auto">
+    <section class="hidden sm:flex flex-col items-center md:px-10 lg:px-12 xl:px-20 mx-auto">
       <header class="w-full">
         <ul class="flex justify-center items-center w-full">
           <li
@@ -87,7 +88,7 @@
           @click="routeToPage(day.label)"
         >
           <span class="absolute left-1.5 top-3 text-sm leading-0 montserrat">{{ day.label }}</span>
-          <div v-show="today >= day.label" class="flex flex-col items-center justify-center">
+          <div v-show="today >= day.label" class="flex flex-col items-center justify-center mt-2">
             <h6 class="text-xs font-bold wen-kai-mono">總分</h6>
             <h5 class="text-base font-bold montserrat">{{ day.totalScore }}</h5>
           </div>
@@ -125,6 +126,7 @@
               { 'hover:bg-[#D97F17]/10': day.label !== today },
               today >= day.label ? 'cursor-pointer' : 'pointer-events-none'
             ]"
+            @click="routeToPage(day.label)"
           >
             <div class="flex items-center justify-between wen-kai-mono montserrat">
               <h5>
@@ -137,5 +139,26 @@
         </div>
       </div>
     </section>
+    <div class="md:px-10 lg:px-12 xl:px-20 mx-auto">
+      <aside class="mt-8 py-2 px-4 border border-b-2 border-r-2 border-[#d1760f] rounded-lg">
+        <h5 class="text-[#d1760f] text-base sm:text-lg wen-kai-mono">前三名獎金</h5>
+        <ul class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono mt-1 flex flex-row gap-2">
+          <li class="flex items-center gap-1 whitespace-nowrap">
+            <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第一名</span> <span class="montserrat">1500</span>
+            <span class="ml-1 sm:ml-2">/</span>
+          </li>
+          <li class="flex items-center gap-1 whitespace-nowrap">
+            <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第二名</span> <span class="montserrat">1000</span>
+            <span class="ml-1 sm:ml-2">/</span>
+          </li>
+          <li class="flex items-center gap-1 whitespace-nowrap">
+            <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第三名</span> <span class="montserrat">500</span>
+          </li>
+        </ul>
+        <p class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono mt-1 whitespace-nowrap">
+          為鼓勵銀河水積極參與，計分方式加倍計算
+        </p>
+      </aside>
+    </div>
   </div>
 </template>
