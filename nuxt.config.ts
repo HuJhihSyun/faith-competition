@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['@/assets/css/main.css'],
-  modules: ['nuxt-svgo-loader'],
+  modules: ['nuxt-svgo-loader', '@pinia/nuxt'],
   vite: {
     plugins: [tailwindcss()]
   },
@@ -14,6 +14,11 @@ export default defineNuxtConfig({
 
     head: {
       link: [{ rel: 'icon', type: 'image/x-icon', href: 'https://www.loveandword.tw/resource/images/favicon.ico' }]
+    }
+  },
+  runtimeConfig: {
+    public: {
+      googleClientId: '968526040414-g573ujacodvl4id9totpjs42i411p4e3.apps.googleusercontent.com'
     }
   }
 })

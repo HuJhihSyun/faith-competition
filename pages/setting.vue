@@ -1,9 +1,11 @@
 <script setup lang="ts">
-  import { useLocalStorage } from '@vueuse/core'
+  import { useAuthStore } from '@/stores/auth'
   import MaleSvg from '@/assets/images/male.svg?skipsvgo'
   import FemaleSvg from '@/assets/images/female.svg?skipsvgo'
+  import GoogleSvg from '@/assets/images/google.svg?skipsvgo'
 
   const router = useRouter()
+  const authStore = useAuthStore()
 
   useSeoMeta({
     title: '無限榮耀神 | 基本資料填寫',
@@ -18,32 +20,20 @@
     ogImage: 'images/evangelism-cover.jpg'
   })
 
-  type UserInformation = {
-    name: string
-    department: number
-    gender: boolean
-  }
-
-  const userInformation = useLocalStorage<UserInformation>('loveWordsEventUserInfo', {
-    name: '',
-    department: 0,
-    gender: false
-  })
-
   // 錯誤提示
   const isNameFalse = ref<boolean>(false)
   const isDepartmentFalse = ref<boolean>(false)
 
   const saveInfo = () => {
-    if (!userInformation.value.name || !userInformation.value.department) {
-      if (!userInformation.value.name) {
+    if (!authStore.userInformation.name || !authStore.userInformation.department) {
+      if (!authStore.userInformation.name) {
         isNameFalse.value = true
 
         setTimeout(() => {
           isNameFalse.value = false
         }, 500)
       }
-      if (!userInformation.value.department) {
+      if (!authStore.userInformation.department) {
         isDepartmentFalse.value = true
 
         setTimeout(() => {
@@ -56,6 +46,19 @@
     // TODO: 儲存資料 API
     router.push('/result')
   }
+
+  type GoogleUserAccessToken = {
+    access_token: string
+    token_type: string
+    expires_in: number
+    scope: string
+    authuser: string
+    prompt: string
+  }
+
+  const handleGoogleLogin = (response: GoogleUserAccessToken) => {
+    authStore.loginWithGoogle(response)
+  }
 </script>
 
 <template>
@@ -65,19 +68,44 @@
       <template #subtitle>基本資料填寫</template>
     </Subtitle>
     <div class="flex flex-col items-center mx-auto lg:px-12 xl:px-28">
-      <InputText v-model="userInformation.name" :class="isNameFalse ? 'bg-red-400/80' : ''" />
-      <DepartmentSelect
-        class="mt-4"
-        :class="isDepartmentFalse ? 'bg-red-400/80' : ''"
-        v-model="userInformation.department"
-      />
-      <ToggleSwitch v-model="userInformation.gender" class="mt-4">
-        <template #left-text> <FemaleSvg class="w-4 h-4" />姐妹 </template>
-        <template #right-text> <MaleSvg class="w-4 h-4" />弟兄 </template>
-      </ToggleSwitch>
-    </div>
-    <div class="flex flex-col justify-center items-center mt-8">
-      <Button :fn="saveInfo">儲存資料</Button>
+      <template v-if="!authStore.userInformation.id">
+        <ClientOnly>
+          <GoogleLogin :callback="handleGoogleLogin" popup-type="TOKEN">
+            <Button><GoogleSvg class="w-5 h-5 mr-2" />使用 Google 進行登入</Button>
+          </GoogleLogin>
+        </ClientOnly>
+      </template>
+      <template v-else>
+        <div class="w-full flex flex-col items-center gap-4">
+          <img
+            v-if="authStore.userInformation.avatar"
+            :src="authStore.userInformation.avatar"
+            :alt="authStore.userInformation.id"
+            class="w-24 h-24 rounded-lg object-cover"
+          />
+          <InputText
+            v-model="authStore.userInformation.name"
+            :disabled="!!authStore.userInformation.id"
+            :class="isNameFalse ? 'bg-red-400/80' : ''"
+          />
+          <InputText
+            v-model="authStore.userInformation.email"
+            :disabled="!!authStore.userInformation.id"
+            :notice="'請輸入您的電子郵件'"
+          />
+          <DepartmentSelect
+            :class="isDepartmentFalse ? 'bg-red-400/80' : ''"
+            v-model="authStore.userInformation.department"
+          />
+          <ToggleSwitch v-model="authStore.userInformation.gender">
+            <template #left-text> <FemaleSvg class="w-4 h-4" />姐妹 </template>
+            <template #right-text> <MaleSvg class="w-4 h-4" />弟兄 </template>
+          </ToggleSwitch>
+        </div>
+        <div class="flex flex-col justify-center items-center mt-8">
+          <Button :fn="saveInfo">儲存資料</Button>
+        </div>
+      </template>
     </div>
   </div>
 </template>

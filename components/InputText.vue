@@ -5,6 +5,7 @@
     modelValue: string
     notice?: string
     buttonName?: string
+    disabled?: boolean
     fn?: () => void
   }
 
@@ -16,6 +17,7 @@
     modelValue: '',
     notice: '請輸入您的暱稱',
     hasButton: '',
+    disabled: false,
     fn: () => {}
   })
 
@@ -27,10 +29,12 @@
 <template>
   <div
     class="relative max-h-12 flex w-full mx-auto px-5 py-3 overflow-hidden border backdrop-blur-md rounded-md border-b-2 border-r-2 border-[#D97F17] transition-all duration-300"
+    :class="{ 'bg-[#d1760f]/10': disabled }"
   >
     <input
       v-model="modelValue"
       class="text-center grow tracking-wide align-middle placeholder:text-[#e7ab67] text-[#d1760f] wen-kai-mono font-bold border-none outline-0"
+      :class="{ 'pointer-events-none': disabled }"
       type="text"
       :placeholder="notice"
     />
