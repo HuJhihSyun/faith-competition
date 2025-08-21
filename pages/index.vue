@@ -47,16 +47,16 @@
   <div>
     <h3 class="text-[#D97F17] font-bold text-2xl text-center montserrat">2025</h3>
     <h1
-      class="text-[#D97F17] text-3xl sm:text-4xl md:text-5xl text-center wen-kai-mono py-3 lg:py-6 px-10 tracking-wider whitespace-nowrap"
+      class="text-[#D97F17] text-3xl sm:text-4xl md:text-5xl text-center wen-kai-mono py-3 lg:py-4 px-10 tracking-wider whitespace-nowrap"
     >
       光輝十月
     </h1>
     <h2
-      class="relative text-[#D97F17] font-bold text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-center wen-kai-mono mb-6 md:mb-10 before:content-[''] before:w-full before:h-[1px] before:bg-[#D97F17] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0"
+      class="relative text-[#D97F17] font-bold text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-center wen-kai-mono mb-4 md:mb-6 before:content-[''] before:w-full before:h-[1px] before:bg-[#D97F17] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0"
     >
       <span class="inline-block backdrop-blur-sm px-4 md:px-6 tracking-widest">無限榮耀神</span>
     </h2>
-    <section class="hidden sm:flex flex-col items-center md:px-10 lg:px-12 xl:px-20 mx-auto">
+    <section class="hidden sm:flex flex-col items-center md:px-10 lg:px-12 xl:px-32 2xl:px-36 mx-auto">
       <header class="w-full">
         <ul class="flex justify-center items-center w-full">
           <li
@@ -139,7 +139,7 @@
         </div>
       </div>
     </section>
-    <div class="md:px-10 lg:px-12 xl:px-20 mx-auto">
+    <div class="md:px-10 lg:px-12 xl:px-32 2xl:px-36 mx-auto">
       <aside class="mt-8 py-2 px-4 border border-b-2 border-r-2 border-[#d1760f] rounded-lg">
         <h5 class="text-[#d1760f] text-base sm:text-lg wen-kai-mono">前三名獎金</h5>
         <ul class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono mt-1 flex flex-row gap-2">

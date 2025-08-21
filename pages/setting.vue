@@ -64,7 +64,7 @@
       <template #title>無限榮耀神</template>
       <template #subtitle>基本資料填寫</template>
     </Subtitle>
-    <div class="flex flex-col items-center mx-auto">
+    <div class="flex flex-col items-center mx-auto lg:px-12 xl:px-28">
       <InputText v-model="userInformation.name" :class="isNameFalse ? 'bg-red-400/80' : ''" />
       <DepartmentSelect
         class="mt-4"

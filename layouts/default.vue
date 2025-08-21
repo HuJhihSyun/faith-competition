@@ -9,7 +9,7 @@
 <template>
   <div
     id="default-layout"
-    class="relative bg-[url(@/assets/images/bg-flower.webp)] bg-cover bg-no-repeat w-full h-screen flex items-center justify-center overflow-hidden"
+    class="relative bg-[url(@/assets/images/bg-flower.webp)] bg-cover bg-no-repeat w-full h-screen overflow-auto flex items-center justify-center"
   >
     <div class="relative w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 mx-auto z-40">
       <slot />
@@ -23,9 +23,6 @@
         <p class="text-white montserrat text-2xl mt-4">Loading...</p>
       </aside>
     </transition>
-    <div
-      class="absolute w-full h-full bg-[url(@/assets/images/back-cloud.png)] bg-cover bg-no-repeat opacity-5 pointer-events-none z-0"
-    ></div>
     <div class="sparkCover absolute w-full h-full left-0 top-0 pointer-events-none z-20">
       <div class="spark1"></div>
       <div class="spark2"></div>

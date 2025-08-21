@@ -96,7 +96,7 @@
     >
       {{ point }} / {{ goal }}
     </h3>
-    <div class="mt-4 md:mt-8 w-full flex flex-col justify-center items-center gap-1">
+    <div class="mt-4 md:mt-8 w-full flex flex-col justify-center items-center gap-1 lg:px-12 xl:px-28">
       <div
         v-for="department in departmentProgresses"
         :key="department.id"
