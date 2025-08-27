@@ -59,10 +59,13 @@ export const useAuthStore = defineStore('auth', () => {
         id: string
       }
       console.log('User Info:', user)
-      userInformation.value.name = user.name
-      userInformation.value.email = user.email
-      userInformation.value.avatar = user.avatar
-      userInformation.value.id = user.id
+      userInformation.value = {
+        ...userInformation.value,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
+        id: user.id
+      }
 
       // TODO: JWT
     } catch (error) {

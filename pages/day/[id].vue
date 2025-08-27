@@ -66,22 +66,12 @@
       isChecked: false
     },
     {
-      title: '運動',
-      id: 'exercise',
-      subtitle: '30分鐘1分',
-      icon: markRaw(DumbbellSvg),
-      isChecked: false,
-      quantity: 0,
-      unit: '分鐘'
-    },
-    {
       title: '禱告',
       id: 'pray',
       subtitle: '5分鐘1分',
       icon: markRaw(PraySvg),
       isChecked: false,
-      quantity: 0,
-      unit: '分鐘'
+      unit: '10分鐘'
     }
   ])
 
@@ -112,13 +102,6 @@
       isChecked: false,
       quantity: 0,
       unit: '次'
-    },
-    {
-      title: '感謝老師',
-      id: 'appreciate',
-      subtitle: '1日1分',
-      icon: markRaw(MeetingSvg),
-      isChecked: false
     }
   ])
 
@@ -181,7 +164,7 @@
               />
               <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
             </h4>
-            <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
+            <!-- <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5> -->
           </div>
         </div>
       </section>
@@ -214,7 +197,7 @@
               />
               <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
             </h4>
-            <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
+            <!-- <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5> -->
           </div>
         </div>
       </section>
@@ -239,23 +222,14 @@
       </button>
     </div>
     <aside class="mt-8 py-2 px-4 border border-b-2 border-r-2 border-[#d1760f] rounded-lg">
-      <h5 class="text-[#d1760f] text-base sm:text-lg wen-kai-mono">前三名獎金</h5>
-      <ul class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono mt-1 flex flex-row gap-2">
-        <li class="flex items-center gap-1 whitespace-nowrap">
-          <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第一名</span> <span class="montserrat">1500</span>
-          <span class="ml-1 sm:ml-2">/</span>
-        </li>
-        <li class="flex items-center gap-1 whitespace-nowrap">
-          <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第二名</span> <span class="montserrat">1000</span>
-          <span class="ml-1 sm:ml-2">/</span>
-        </li>
-        <li class="flex items-center gap-1 whitespace-nowrap">
-          <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第三名</span> <span class="montserrat">500</span>
-        </li>
+      <h5 class="text-[#d1760f] text-base sm:text-lg wen-kai-mono">活動說明</h5>
+      <ul class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono my-1">
+        <li class="flex items-center">• 活動時間 10／6～10／19</li>
+        <li class="flex items-center">• 基本信仰各項每天都完成者可進入抽獎</li>
+        <li class="flex items-center">• 傳道.聽課.講義按各自完成次數分別進行抽獎</li>
+        <li class="flex items-center">• 每週抽獎一次，各項抽出一人</li>
+        <li class="flex items-center">• 可獲得精美手提袋乙個</li>
       </ul>
-      <p class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono mt-1 whitespace-nowrap">
-        為鼓勵銀河水積極參與，計分方式加倍計算
-      </p>
     </aside>
   </div>
 </template>

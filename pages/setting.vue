@@ -59,6 +59,8 @@
   const handleGoogleLogin = (response: GoogleUserAccessToken) => {
     authStore.loginWithGoogle(response)
   }
+
+  const isLoggedIn = computed(() => !!authStore.userInformation?.id)
 </script>
 
 <template>
@@ -68,7 +70,7 @@
       <template #subtitle>基本資料填寫</template>
     </Subtitle>
     <div class="flex flex-col items-center mx-auto lg:px-12 xl:px-28">
-      <template v-if="!authStore.userInformation.id">
+      <template v-if="!isLoggedIn">
         <ClientOnly>
           <GoogleLogin :callback="handleGoogleLogin" popup-type="TOKEN">
             <Button><GoogleSvg class="w-5 h-5 mr-2" />使用 Google 進行登入</Button>
@@ -78,7 +80,7 @@
       <template v-else>
         <div class="w-full flex flex-col items-center gap-4">
           <img
-            v-if="authStore.userInformation.avatar"
+            v-show="authStore.userInformation.avatar"
             :src="authStore.userInformation.avatar"
             :alt="authStore.userInformation.id"
             class="w-24 h-24 rounded-lg object-cover"

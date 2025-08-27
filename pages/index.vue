@@ -35,8 +35,6 @@
   const today = ref<number>(now.value.getDate())
   const thisWeek = ref<number>(Math.ceil((today.value + 3) / 7))
   const selectedWeek = ref<number>(Math.ceil((today.value + 3) / 7))
-  console.log('Today:', today.value)
-  console.log('Selected Week:', selectedWeek.value)
 
   const routeToPage = (day: number) => {
     router.push(`/day/${day}`)
@@ -81,14 +79,18 @@
           :key="day.label"
           class="relative flex flex-col items-center justify-center border border-[#D97F17] text-[#D97F17] h-16 xl:h-20 rounded-md transition-all duration-100"
           :class="[
-            { 'bg-[#D97F17] text-white hover:bg-[#d27914]': day.label === today },
+            { 'bg-[#D97F17] text-white hover:bg-[#d27914]': day.label === today && day.label >= 6 && day.label <= 19 },
             { 'hover:border-b-2 hover:border-r-2 hover:bg-[#D97F17]/10': day.label !== today },
+            { 'border-[#D97F17]/30 text-[#D97F17]/30 pointer-events-none': day.label < 6 || day.label > 19 },
             today >= day.label ? 'cursor-pointer' : 'pointer-events-none'
           ]"
           @click="routeToPage(day.label)"
         >
           <span class="absolute left-1.5 top-3 text-sm leading-0 montserrat">{{ day.label }}</span>
-          <div v-show="today >= day.label" class="flex flex-col items-center justify-center mt-2">
+          <div
+            v-show="today >= day.label && day.label >= 6 && day.label <= 19"
+            class="flex flex-col items-center justify-center mt-2"
+          >
             <h6 class="text-xs font-bold wen-kai-mono">總分</h6>
             <h5 class="text-base font-bold montserrat">{{ day.totalScore }}</h5>
           </div>
@@ -141,23 +143,14 @@
     </section>
     <div class="md:px-10 lg:px-12 xl:px-32 2xl:px-36 mx-auto">
       <aside class="mt-8 py-2 px-4 border border-b-2 border-r-2 border-[#d1760f] rounded-lg">
-        <h5 class="text-[#d1760f] text-base sm:text-lg wen-kai-mono">前三名獎金</h5>
-        <ul class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono mt-1 flex flex-row gap-2">
-          <li class="flex items-center gap-1 whitespace-nowrap">
-            <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第一名</span> <span class="montserrat">1500</span>
-            <span class="ml-1 sm:ml-2">/</span>
-          </li>
-          <li class="flex items-center gap-1 whitespace-nowrap">
-            <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第二名</span> <span class="montserrat">1000</span>
-            <span class="ml-1 sm:ml-2">/</span>
-          </li>
-          <li class="flex items-center gap-1 whitespace-nowrap">
-            <AwardSvg class="w-4 h-4 hidden sm:block" /><span>第三名</span> <span class="montserrat">500</span>
-          </li>
+        <h5 class="text-[#d1760f] text-base sm:text-lg wen-kai-mono">活動說明</h5>
+        <ul class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono my-1">
+          <li class="flex items-center">• 活動時間 10／6～10／19</li>
+          <li class="flex items-center">• 基本信仰各項每天都完成者可進入抽獎</li>
+          <li class="flex items-center">• 傳道.聽課.講義按各自完成次數分別進行抽獎</li>
+          <li class="flex items-center">• 每週抽獎一次，各項抽出一人</li>
+          <li class="flex items-center">• 可獲得精美手提袋乙個</li>
         </ul>
-        <p class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono mt-1 whitespace-nowrap">
-          為鼓勵銀河水積極參與，計分方式加倍計算
-        </p>
       </aside>
     </div>
   </div>
