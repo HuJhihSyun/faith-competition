@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import ChartSvg from '@/assets/images/chart.svg?skipsvgo'
+  import AwardSvg from '@/assets/images/award.svg?skipsvgo'
   import CalendarSvg from '@/assets/images/calendar.svg?skipsvgo'
   import UserEditSvg from '@/assets/images/user-edit.svg?skipsvgo'
 
@@ -22,9 +22,9 @@
       icon: CalendarSvg
     },
     {
-      title: '部門排名',
-      path: 'result',
-      icon: ChartSvg
+      title: '抽獎名單',
+      path: 'info',
+      icon: AwardSvg
     },
     {
       title: '資料填寫',
