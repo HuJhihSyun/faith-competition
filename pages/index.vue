@@ -103,7 +103,7 @@
       </div>
     </section>
     <section class="flex sm:hidden flex-col items-center gap-1 mx-auto">
-      <div v-for="week in 5" :key="week" class="w-full">
+      <div v-for="week in 2" :key="week" class="w-full">
         <div
           class="mobile-header text-white text-center text-sm w-full py-1 rounded-md wen-kai-mono"
           :class="[
@@ -112,15 +112,15 @@
           ]"
           @click="selectedWeek = week"
         >
-          第 <span class="montserrat">{{ week }}</span> 週
-          <ChevronSvg class="text-white inline-block w-4 h-4" :class="selectedWeek === week ? 'rotate-180' : ''" />
+          <span class="montserrat">10 / {{ week * 6 }} ~ 10 / {{ week * 6 + 7 }}</span>
+          <ChevronSvg class="text-white inline-block w-4 h-4 ml-1" :class="selectedWeek === week ? 'rotate-180' : ''" />
         </div>
         <div
           class="flex flex-col items-center justify-center gap-1 overflow-hidden transition-all duration-300"
           :class="selectedWeek === week ? 'max-h-80 mb-0.5' : 'max-h-0'"
         >
           <button
-            v-for="(day, index) in dayInfoArray.slice(Math.max((week - 1) * 7 - 3, 0), Math.max(week * 7 - 3, 0))"
+            v-for="(day, index) in dayInfoArray.slice(Math.max(week * 7 - 2, 0), Math.max((week + 1) * 7 - 2, 0))"
             :key="day.label"
             class="mobile-button border border-[#D97F17] text-[#D97F17] text-sm w-full py-1.5 px-3 rounded-md"
             :class="[
@@ -133,7 +133,7 @@
             <div class="flex items-center justify-between wen-kai-mono montserrat">
               <h5>
                 <span class="montserrat">10</span> 月 <span class="montserrat">{{ day.label }}</span> 日
-                <span class="montserrat">{{ week === 1 ? headerTextArray[index + 3] : headerTextArray[index] }}</span>
+                <span class="montserrat">{{ headerTextArray[(index + 1) % 7] }}</span>
               </h5>
               <h6>總分：{{ today >= day.label ? day.totalScore : '-' }}</h6>
             </div>
@@ -142,7 +142,9 @@
       </div>
     </section>
     <div class="md:px-10 lg:px-12 xl:px-32 2xl:px-36 mx-auto">
-      <aside class="mt-8 py-2 px-4 border border-b-2 border-r-2 border-[#d1760f] rounded-lg">
+      <aside
+        class="mt-8 py-2 px-4 border border-b-2 border-r-2 border-[#d1760f] rounded-lg backdrop-blur-xs md:backdrop-blur-none"
+      >
         <h5 class="text-[#d1760f] text-base sm:text-lg wen-kai-mono">活動說明</h5>
         <ul class="text-[#d1760f] text-xs sm:text-sm wen-kai-mono my-1">
           <li class="flex items-center">• 活動時間 10／6～10／19</li>
