@@ -20,9 +20,26 @@ export function useLineApi() {
     })
   }
 
+  // 十月榮耀神
+  const getUserInfo = async (token: string) => {
+    return await $fetch(`${baseUrl}/getUserInfo`, {
+      method: 'POST',
+      body: { token: token }
+    })
+  }
+
+  const userUpdate = async (data: Record<string, any>) => {
+    return await $fetch(`${baseUrl}/userUpdate`, {
+      method: 'POST',
+      body: data
+    })
+  }
+
   return {
     postLine,
     getLineResult,
-    getUsers
+    getUsers,
+    getUserInfo,
+    userUpdate
   }
 }

@@ -3,9 +3,11 @@
   import MaleSvg from '@/assets/images/male.svg?skipsvgo'
   import FemaleSvg from '@/assets/images/female.svg?skipsvgo'
   import GoogleSvg from '@/assets/images/google.svg?skipsvgo'
+  import { useLineApi } from '@/composables/useLineApi'
 
   const router = useRouter()
   const authStore = useAuthStore()
+  const { userUpdate } = useLineApi()
 
   useSeoMeta({
     title: '無限榮耀神 | 基本資料填寫',
@@ -20,11 +22,22 @@
     ogImage: 'images/evangelism-cover.jpg'
   })
 
+  type updateUser = {
+    sub: string
+    name: string
+    id: string
+    email: string
+    picture: string
+    gender: string
+    department: string
+    token?: string
+  }
+
   // 錯誤提示
   const isNameFalse = ref<boolean>(false)
   const isDepartmentFalse = ref<boolean>(false)
 
-  const saveInfo = () => {
+  const saveInfo = async () => {
     if (!authStore.userInformation.name || !authStore.userInformation.department) {
       if (!authStore.userInformation.name) {
         isNameFalse.value = true
@@ -44,7 +57,23 @@
     }
 
     // TODO: 儲存資料 API
-    router.push('/result')
+    const updateUser: updateUser = (await userUpdate({
+      sub: authStore.userInformation.sub,
+      name: authStore.userInformation.name,
+      id: authStore.userInformation.id,
+      email: authStore.userInformation.email,
+      picture: authStore.userInformation.picture,
+      gender: authStore.userInformation.gender,
+      department: authStore.userInformation.department
+    })) as updateUser
+
+    console.log('updateUser', updateUser)
+
+    if (updateUser.token) {
+      authStore.jwt = updateUser.token as string
+    }
+
+    router.push('/')
   }
 
   type GoogleUserAccessToken = {
@@ -60,7 +89,7 @@
     authStore.loginWithGoogle(response)
   }
 
-  const isLoggedIn = computed(() => !!authStore.userInformation?.id)
+  const isLoggedIn = computed(() => !!authStore.jwt)
 </script>
 
 <template>
@@ -80,8 +109,8 @@
       <template v-else>
         <div class="w-full flex flex-col items-center gap-4">
           <img
-            v-show="authStore.userInformation.avatar"
-            :src="authStore.userInformation.avatar"
+            v-show="authStore.userInformation.picture"
+            :src="authStore.userInformation.picture"
             :alt="authStore.userInformation.id"
             class="w-24 h-24 rounded-lg object-cover"
           />

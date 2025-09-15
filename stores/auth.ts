@@ -1,11 +1,15 @@
 import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
+import { useLineApi } from '@/composables/useLineApi'
+
+const { getUserInfo } = useLineApi()
 
 type UserInformation = {
   name: string
   id: string
   email: string
-  avatar: string
+  picture: string
+  sub: string
   department: number
   gender: boolean
 }
@@ -34,40 +38,36 @@ export const useAuthStore = defineStore('auth', () => {
     name: '',
     id: '',
     email: '',
-    avatar: '',
+    picture: '',
+    sub: '',
     department: 0,
     gender: false
   })
 
   const loginWithGoogle = async (response: GoogleUserAccessToken) => {
-    console.log('Google User Response', response)
-
     const { access_token } = response
+
     if (!access_token) {
       console.error('No access token found')
       return
     }
 
     try {
-      const user = (await $fetch('/api/auth/google', {
-        method: 'POST',
-        body: { accessToken: access_token }
-      })) as {
-        name: string
-        email: string
-        avatar: string
-        id: string
-      }
-      console.log('User Info:', user)
+      const userInfo: UserInformation | any = await getUserInfo(access_token)
       userInformation.value = {
-        ...userInformation.value,
-        name: user.name,
-        email: user.email,
-        avatar: user.avatar,
-        id: user.id
+        name: userInfo.name,
+        id: userInfo.id,
+        email: userInfo.email,
+        picture: userInfo.picture,
+        sub: userInfo.sub,
+        department: userInfo.department,
+        gender: userInfo.gender
       }
 
       // TODO: JWT
+      if (userInfo.token) {
+        jwt.value = userInfo.token
+      }
     } catch (error) {
       console.error('Error fetching user info:', error)
     }
