@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import AwardSvg from '@/assets/images/award.svg?skipsvgo'
+  import ChartSvg from '@/assets/images/chart.svg?skipsvgo'
   import CalendarSvg from '@/assets/images/calendar.svg?skipsvgo'
   import UserEditSvg from '@/assets/images/user-edit.svg?skipsvgo'
 
@@ -20,6 +21,11 @@
       title: '我的日曆',
       path: 'index',
       icon: CalendarSvg
+    },
+    {
+      title: '成績查詢',
+      path: 'result',
+      icon: ChartSvg
     },
     {
       title: '抽獎名單',

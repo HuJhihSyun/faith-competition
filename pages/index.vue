@@ -1,7 +1,10 @@
 <script setup lang="ts">
   import ChevronSvg from '@/assets/images/chevron-down.svg?skipsvgo'
   import AwardSvg from '@/assets/images/award.svg?skipsvgo'
+  import { useAuthStore } from '@/stores/auth'
 
+  const { getAllTaskScores } = useLineApi()
+  const authStore = useAuthStore()
   const router = useRouter()
 
   useSeoMeta({
@@ -38,6 +41,29 @@
 
   const routeToPage = (day: number) => {
     router.push(`/day/${day}`)
+  }
+
+  onMounted(async () => {
+    if (!authStore.userInformation.id) return
+    await getAllScores(authStore.userInformation.id)
+  })
+
+  watch(
+    () => authStore.userInformation.id,
+    async (newId: string) => {
+      if (!newId) return
+      await getAllScores(newId)
+    }
+  )
+
+  const getAllScores = async (id: string) => {
+    const allTasks = await getAllTaskScores(id)
+    if (!allTasks || !Array.isArray(allTasks)) return
+
+    allTasks.forEach((task: any) => {
+      const day = dayInfoArray.value.find((d: { label: any }) => Number(d.label) === Number(task.dayOfMonth))
+      if (day) day.totalScore = task.totalScore
+    })
   }
 </script>
 

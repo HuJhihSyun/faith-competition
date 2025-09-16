@@ -11,6 +11,11 @@
   import AwardSvg from '@/assets/images/award.svg?skipsvgo'
   import ChevronLeftSvg from '@/assets/images/chevron-left.svg?skipsvgo'
   import ChevronRightSvg from '@/assets/images/chevron-right.svg?skipsvgo'
+  import { useLineApi } from '@/composables/useLineApi'
+  import { useAuthStore } from '@/stores/auth'
+
+  const { postTask, getTask } = useLineApi()
+  const authStore = useAuthStore()
 
   const route = useRoute()
   const router = useRouter()
@@ -108,8 +113,63 @@
   // TODO: props isFocused
   const isFocused = ref<boolean>(false)
 
-  const saveData = () => {
-    // TODO: Save data logic here
+  onMounted(async () => {
+    if (!authStore.userInformation.id) return
+    await fetchTask(authStore.userInformation.id, Number(dayId))
+  })
+
+  watch(
+    () => authStore.userInformation.id,
+    async (newId: string) => {
+      if (!newId) return
+      await fetchTask(newId, Number(dayId))
+    }
+  )
+
+  const fetchTask = async (userId: string, dayOfMonth: number) => {
+    const taskData = (await getTask(userId, dayOfMonth)) as Record<string, any>
+    if (!taskData) return
+
+    basicTaskOptions.forEach((option: { isChecked: any; id: string | number }) => {
+      option.isChecked = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] : false
+    })
+    gospelTaskOptions.forEach((option: { isChecked: boolean; id: any; quantity?: number | null }) => {
+      option.isChecked = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] > 0 : false
+      option.quantity = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] : 0
+    })
+  }
+
+  const saveData = async () => {
+    const basicTaskPayload = basicTaskOptions.reduce(
+      (acc: { [x: string]: any }, option: { id: string | number; isChecked: any }) => {
+        acc[option.id] = option.isChecked
+        return acc
+      },
+      {} as Record<string, boolean>
+    )
+
+    const gospelTaskPayload = gospelTaskOptions.reduce(
+      (
+        acc: { [x: string]: any },
+        option: { id: string | number; isChecked: any; quantity?: number | undefined | null }
+      ) => {
+        acc[option.id] = 0
+        if (option.isChecked && option.quantity !== null && option.quantity !== undefined) {
+          acc[option.id] = Number(option.quantity)
+        }
+        return acc
+      },
+      {} as Record<string, boolean | number>
+    )
+
+    const payload = {
+      dayOfMonth: Number(dayId),
+      userId: authStore.userInformation.id,
+      ...basicTaskPayload,
+      ...gospelTaskPayload
+    }
+
+    await postTask(payload)
   }
 
   const goYesterday = () => {
@@ -164,7 +224,7 @@
               />
               <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
             </h4>
-            <!-- <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5> -->
+            <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
           </div>
         </div>
       </section>
@@ -192,12 +252,12 @@
                 class="w-10 lg:w-12 px-1 lg:px-2 py-0.5 mx-2 text-sm text-[#d1760f] montserrat border border-[#D97F17] outline-0 focus:border-b-2 focus:border-r-2 rounded text-center"
                 :class="{
                   'border-red-500 text-red-500': isFocused && !disabled,
-                  'pointer-events-none bg-[#d1760f]/10 text-[#d1760f]/50': disabled
+                  'pointer-events-none bg-[#d1760f]/10 text-[#d1760f]/50': disabled || !taskOption.isChecked
                 }"
               />
               <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
             </h4>
-            <!-- <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5> -->
+            <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
           </div>
         </div>
       </section>

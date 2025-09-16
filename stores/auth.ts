@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
-import { useLocalStorage } from '@vueuse/core'
 import { useLineApi } from '@/composables/useLineApi'
 
-const { getUserInfo } = useLineApi()
+const { getUserInfo, userUpdate } = useLineApi()
 
 type UserInformation = {
   name: string
@@ -12,6 +11,7 @@ type UserInformation = {
   sub: string
   department: number
   gender: boolean
+  token?: string
 }
 
 // 如果使用 token：popup-type="TOKEN"
@@ -33,8 +33,8 @@ type GoogleUserCredential = {
 }
 
 export const useAuthStore = defineStore('auth', () => {
-  const jwt = useLocalStorage<string | null>('october_praise_auth_jwt', null)
-  const userInformation = useLocalStorage<UserInformation>('october_praise_auth_user', {
+  const jwt = ref<string | null>(null)
+  const userInformation = reactive<UserInformation>({
     name: '',
     id: '',
     email: '',
@@ -54,28 +54,53 @@ export const useAuthStore = defineStore('auth', () => {
 
     try {
       const userInfo: UserInformation | any = await getUserInfo(access_token)
-      userInformation.value = {
-        name: userInfo.name,
-        id: userInfo.id,
-        email: userInfo.email,
-        picture: userInfo.picture,
-        sub: userInfo.sub,
-        department: userInfo.department,
-        gender: userInfo.gender
-      }
+      userInformation.name = userInfo.name
+      userInformation.id = userInfo.id
+      userInformation.email = userInfo.email
+      userInformation.picture = userInfo.picture
+      userInformation.sub = userInfo.sub
+      userInformation.department = userInfo.department || 0
+      userInformation.gender = userInfo.gender || false
 
-      // TODO: JWT
-      if (userInfo.token) {
-        jwt.value = userInfo.token
-      }
+      if (userInfo.token) jwt.value = userInfo.token
+
+      localStorage.setItem('october_praise_auth_jwt', jwt.value || '')
+      localStorage.setItem('october_praise_auth_user', JSON.stringify(userInformation))
     } catch (error) {
       console.error('Error fetching user info:', error)
+    }
+  }
+
+  const updateUser = async () => {
+    const updateUser = (await userUpdate({
+      sub: userInformation.sub,
+      name: userInformation.name,
+      id: userInformation.id,
+      email: userInformation.email,
+      picture: userInformation.picture,
+      gender: userInformation.gender,
+      department: userInformation.department
+    })) as UserInformation
+
+    userInformation.name = updateUser.name
+    userInformation.id = updateUser.id
+    userInformation.email = updateUser.email
+    userInformation.picture = updateUser.picture
+    userInformation.sub = updateUser.sub
+    userInformation.department = updateUser.department
+    userInformation.gender = updateUser.gender
+
+    localStorage.setItem('october_praise_auth_user', JSON.stringify(userInformation))
+
+    if (updateUser.token) {
+      jwt.value = updateUser.token as string
     }
   }
 
   return {
     jwt,
     userInformation,
-    loginWithGoogle
+    loginWithGoogle,
+    updateUser
   }
 })

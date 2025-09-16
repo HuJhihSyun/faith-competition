@@ -1,8 +1,29 @@
 <script setup lang="ts">
+  import { useAuthStore } from '@/stores/auth'
+  const authStore = useAuthStore()
+  const router = useRouter()
+
   const isLoading = ref<boolean>(true)
 
   onMounted(() => {
     isLoading.value = false
+
+    authStore.jwt = localStorage.getItem('october_praise_auth_jwt')
+    if (!authStore.jwt) {
+      router.push({ path: '/setting' })
+      return
+    }
+
+    authStore.userInformation.name = JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').name || ''
+    authStore.userInformation.id = JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').id || ''
+    authStore.userInformation.email = JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').email || ''
+    authStore.userInformation.picture =
+      JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').picture || ''
+    authStore.userInformation.sub = JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').sub || ''
+    authStore.userInformation.department =
+      Number(JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').department) || 0
+    authStore.userInformation.gender =
+      JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').gender || false
   })
 </script>
 
@@ -47,6 +68,14 @@
     </div>
     <MenuDesktop class="hidden sm:block" />
     <MenuMobile class="flex sm:hidden" />
+    <aside v-if="authStore.jwt" class="bg-black/70 absolute right-1 top-1 p-0.5 rounded-md">
+      <img
+        v-show="authStore.userInformation.picture"
+        :src="authStore.userInformation.picture"
+        :alt="authStore.userInformation.name"
+        class="w-6 h-6 rounded aspect-square object-cover"
+      />
+    </aside>
   </div>
 </template>
 

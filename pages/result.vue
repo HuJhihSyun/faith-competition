@@ -6,6 +6,8 @@
   import PraySvg from '@/assets/images/message-circle-heart.svg?skipsvgo'
   import { useLineApi } from '@/composables/useLineApi'
 
+  const { getResult } = useLineApi()
+
   useSeoMeta({
     title: '無限榮耀神 | 查詢成績',
     author: '© 2025 Love and Word Church All rights reserved.',
@@ -34,49 +36,49 @@
     {
       department: '家庭局',
       id: 'family',
-      point: 75,
+      point: 0,
       icon: markRaw(ContactSvg)
     },
     {
       department: '長年部',
       id: 'older',
-      point: 66,
+      point: 0,
       icon: markRaw(PresentationSvg)
     },
     {
       department: '男生青年部',
       id: 'youth-male',
-      point: 15,
+      point: 0,
       icon: markRaw(LessonSvg)
     },
     {
       department: '女生青年部',
       id: 'youth-female',
-      point: 33,
+      point: 0,
       icon: markRaw(MeetingSvg)
     },
     {
       department: '男生大學部',
       id: 'campus-male',
-      point: 78,
+      point: 0,
       icon: markRaw(PraySvg)
     },
     {
       department: '女生大學部',
       id: 'campus-female',
-      point: 23,
+      point: 0,
       icon: markRaw(PraySvg)
     },
     {
       department: '男生 SS',
       id: 'ss-male',
-      point: 44,
+      point: 0,
       icon: markRaw(PraySvg)
     },
     {
       department: '女生 SS',
       id: 'ss-female',
-      point: 6,
+      point: 0,
       icon: markRaw(PraySvg)
     },
     {
@@ -86,6 +88,20 @@
       icon: markRaw(PraySvg)
     }
   ])
+
+  onMounted(async () => {
+    try {
+      const result = await getResult()
+      if (result && Array.isArray(result)) {
+        departmentProgresses.forEach((dept: any) => {
+          const deptScore = result.find((item: any) => item.department === dept.id)
+          dept.point = deptScore ? deptScore.point || 0 : 0
+        })
+      }
+    } catch (error) {
+      console.error('Error fetching scores:', error)
+    }
+  })
 </script>
 
 <template>
