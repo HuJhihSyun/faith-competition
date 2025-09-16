@@ -2,6 +2,7 @@
   import { useAuthStore } from '@/stores/auth'
   const authStore = useAuthStore()
   const router = useRouter()
+  const route = useRoute()
 
   const isLoading = ref<boolean>(true)
 
@@ -25,6 +26,11 @@
     authStore.userInformation.gender =
       JSON.parse(localStorage.getItem('october_praise_auth_user') || '{}').gender || false
   })
+
+  const logout = () => {
+    authStore.logout()
+    router.push({ path: '/setting' })
+  }
 </script>
 
 <template>
@@ -68,13 +74,17 @@
     </div>
     <MenuDesktop class="hidden sm:block" />
     <MenuMobile class="flex sm:hidden" />
-    <aside v-if="authStore.jwt" class="bg-black/70 absolute right-1 top-1 p-0.5 rounded-md">
+    <aside
+      v-if="authStore.jwt && route.fullPath !== '/setting'"
+      class="group bg-black/70 absolute right-1 top-1 p-0.5 rounded-md flex justify-center items-center z-50"
+    >
       <img
         v-show="authStore.userInformation.picture"
         :src="authStore.userInformation.picture"
         :alt="authStore.userInformation.name"
         class="w-6 h-6 rounded aspect-square object-cover"
       />
+      <p class="hidden group-hover:block text-white text-xs px-2 montserrat cursor-pointer" @click="logout">登出</p>
     </aside>
   </div>
 </template>

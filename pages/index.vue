@@ -37,7 +37,7 @@
   const now = ref<Date>(new Date())
   const today = ref<number>(now.value.getDate())
   const thisWeek = ref<number>(Math.ceil((today.value + 3) / 7))
-  const selectedWeek = ref<number>(Math.ceil((today.value + 3) / 7))
+  const selectedWeek = ref<number>(today.value >= 13 ? 2 : 1)
 
   const routeToPage = (day: number) => {
     router.push(`/day/${day}`)
@@ -138,7 +138,8 @@
           ]"
           @click="selectedWeek = week"
         >
-          <span class="montserrat">10 / {{ week * 6 }} ~ 10 / {{ week * 6 + 7 }}</span>
+          <span v-if="week === 1" class="montserrat">10 / 6 ~ 10 / 12</span>
+          <span v-else-if="week === 2" class="montserrat">10 / 13 ~ 10 / 19</span>
           <ChevronSvg class="text-white inline-block w-4 h-4 ml-1" :class="selectedWeek === week ? 'rotate-180' : ''" />
         </div>
         <div

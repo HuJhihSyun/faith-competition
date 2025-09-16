@@ -38,7 +38,7 @@
     router.push({ path: '/' })
   }
 
-  const isLoggedIn = computed(() => !!authStore.jwt)
+  const isLoggedIn = computed(() => !!authStore.userInformation.id)
 </script>
 
 <template>

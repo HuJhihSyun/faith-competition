@@ -127,16 +127,20 @@
   )
 
   const fetchTask = async (userId: string, dayOfMonth: number) => {
-    const taskData = (await getTask(userId, dayOfMonth)) as Record<string, any>
-    if (!taskData) return
+    try {
+      const taskData = (await getTask(userId, dayOfMonth)) as Record<string, any>
+      if (!taskData) return
 
-    basicTaskOptions.forEach((option: { isChecked: any; id: string | number }) => {
-      option.isChecked = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] : false
-    })
-    gospelTaskOptions.forEach((option: { isChecked: boolean; id: any; quantity?: number | null }) => {
-      option.isChecked = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] > 0 : false
-      option.quantity = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] : 0
-    })
+      basicTaskOptions.forEach((option: { isChecked: any; id: string | number }) => {
+        option.isChecked = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] : false
+      })
+      gospelTaskOptions.forEach((option: { isChecked: boolean; id: any; quantity?: number | null }) => {
+        option.isChecked = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] > 0 : false
+        option.quantity = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] : 0
+      })
+    } catch (error) {
+      console.error('Error fetching task data:', error)
+    }
   }
 
   const saveData = async () => {

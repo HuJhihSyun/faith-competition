@@ -59,12 +59,14 @@ export const useAuthStore = defineStore('auth', () => {
       userInformation.email = userInfo.email
       userInformation.picture = userInfo.picture
       userInformation.sub = userInfo.sub
-      userInformation.department = userInfo.department || 0
+      userInformation.department = Number(userInfo.department) || 0
       userInformation.gender = userInfo.gender || false
 
-      if (userInfo.token) jwt.value = userInfo.token
+      if (userInfo.token) {
+        jwt.value = userInfo.token as string
+        localStorage.setItem('october_praise_auth_jwt', jwt.value || '')
+      }
 
-      localStorage.setItem('october_praise_auth_jwt', jwt.value || '')
       localStorage.setItem('october_praise_auth_user', JSON.stringify(userInformation))
     } catch (error) {
       console.error('Error fetching user info:', error)
@@ -87,20 +89,36 @@ export const useAuthStore = defineStore('auth', () => {
     userInformation.email = updateUser.email
     userInformation.picture = updateUser.picture
     userInformation.sub = updateUser.sub
-    userInformation.department = updateUser.department
+    userInformation.department = Number(updateUser.department) || 0
     userInformation.gender = updateUser.gender
 
     localStorage.setItem('october_praise_auth_user', JSON.stringify(userInformation))
 
     if (updateUser.token) {
       jwt.value = updateUser.token as string
+      localStorage.setItem('october_praise_auth_jwt', jwt.value || '')
     }
+  }
+
+  const logout = () => {
+    jwt.value = null
+    userInformation.name = ''
+    userInformation.id = ''
+    userInformation.email = ''
+    userInformation.picture = ''
+    userInformation.sub = ''
+    userInformation.department = 0
+    userInformation.gender = false
+
+    localStorage.removeItem('october_praise_auth_jwt')
+    localStorage.removeItem('october_praise_auth_user')
   }
 
   return {
     jwt,
     userInformation,
     loginWithGoogle,
-    updateUser
+    updateUser,
+    logout
   }
 })

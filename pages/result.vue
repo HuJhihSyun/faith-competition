@@ -21,12 +21,13 @@
     ogImage: 'images/evangelism-cover.jpg'
   })
 
-  const point = ref<number>(0)
-  const percentage = ref<number>(0)
-  const goal = ref<number>(1978)
+  const goal = ref<number>(100)
+  const summary = ref<number>(0)
 
   type DepartmentProgress = {
-    department: string
+    label: string
+    department: number
+    gender?: boolean
     id: string
     point: number
     icon: Component
@@ -34,55 +35,70 @@
 
   const departmentProgresses = reactive<DepartmentProgress[]>([
     {
-      department: '家庭局',
+      label: '家庭局',
+      department: 5,
       id: 'family',
       point: 0,
       icon: markRaw(ContactSvg)
     },
     {
-      department: '長年部',
+      label: '長年部',
+      department: 6,
       id: 'older',
       point: 0,
       icon: markRaw(PresentationSvg)
     },
     {
-      department: '男生青年部',
+      label: '男生青年部',
+      department: 4,
+      gender: true,
       id: 'youth-male',
       point: 0,
       icon: markRaw(LessonSvg)
     },
     {
-      department: '女生青年部',
+      label: '女生青年部',
+      department: 4,
+      gender: false,
       id: 'youth-female',
       point: 0,
       icon: markRaw(MeetingSvg)
     },
     {
-      department: '男生大學部',
+      label: '男生大學部',
+      department: 3,
+      gender: true,
       id: 'campus-male',
       point: 0,
       icon: markRaw(PraySvg)
     },
     {
-      department: '女生大學部',
+      label: '女生大學部',
+      department: 3,
+      gender: false,
       id: 'campus-female',
       point: 0,
       icon: markRaw(PraySvg)
     },
     {
-      department: '男生 SS',
+      label: '男生 SS',
+      department: 2,
+      gender: true,
       id: 'ss-male',
       point: 0,
       icon: markRaw(PraySvg)
     },
     {
-      department: '女生 SS',
+      label: '女生 SS',
+      department: 2,
+      gender: false,
       id: 'ss-female',
       point: 0,
       icon: markRaw(PraySvg)
     },
     {
-      department: '銀河水',
+      label: '銀河水',
+      department: 1,
       id: 'galaxy',
       point: 0,
       icon: markRaw(PraySvg)
@@ -94,10 +110,15 @@
       const result = await getResult()
       if (result && Array.isArray(result)) {
         departmentProgresses.forEach((dept: any) => {
-          const deptScore = result.find((item: any) => item.department === dept.id)
-          dept.point = deptScore ? deptScore.point || 0 : 0
+          const matched = result.find(
+            (item: any) =>
+              Number(item.department) === Number(dept.department) &&
+              (item.gender === dept.gender || dept.gender === undefined)
+          )
+          dept.point = matched ? Number(matched.totalScore) : 0
         })
       }
+      summary.value = departmentProgresses.reduce((acc: number, dept: { point: number }) => acc + dept.point, 0)
     } catch (error) {
       console.error('Error fetching scores:', error)
     }
@@ -106,11 +127,11 @@
 
 <template>
   <div class="flex flex-col items-center justify-center">
-    <Progress class="mt-4 md:mt-6" :percentage="percentage" />
     <h3
       class="mt-4 md:mt-6 text-xl md:text-2xl font-bold bg-gradient-to-br from-[#d1760f] to-[#f47c0e] inline-block text-transparent bg-clip-text montserrat"
     >
-      {{ point }} / {{ goal }}
+      <span class="wen-kai-mono text-lg md:text-xl">總積分：</span>{{ summary
+      }}<span class="wen-kai-mono ml-1 text-lg md:text-xl">分</span>
     </h3>
     <div class="mt-4 md:mt-8 w-full flex flex-col justify-center items-center gap-1 lg:px-12 xl:px-28">
       <div
@@ -119,12 +140,12 @@
         class="flex justify-between items-center w-full"
       >
         <h5 class="text-sm md:text-base text-[#d1760f] font-bold wen-kai-mono whitespace-nowrap min-w-20 md:min-w-24">
-          {{ department.department }}
+          {{ department.label }}
         </h5>
         <div class="progress relative w-full h-4.5 bg-[#D97F17]/10 rounded overflow-hidden">
           <div
             class="progress-bar absolute left-0.5 top-1/2 -translate-y-1/2 h-3 bg-gradient-to-bl from-[#f47d0d]/60 to-[#D97F17] rounded-xs"
-            :style="{ width: `${department.point}%` }"
+            :style="{ width: `${(department.point / goal) * 100}%` }"
           ></div>
         </div>
         <h6 class="text-xs md:text-sm text-[#d1760f] wen-kai-mono whitespace-nowrap min-w-24 md:min-w-28 text-right">
