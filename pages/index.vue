@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import ChevronSvg from '@/assets/images/chevron-down.svg?skipsvgo'
-  import AwardSvg from '@/assets/images/award.svg?skipsvgo'
   import { useAuthStore } from '@/stores/auth'
 
   const { getAllTaskScores } = useLineApi()

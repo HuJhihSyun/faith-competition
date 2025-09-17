@@ -2,13 +2,10 @@
   import ContactSvg from '@/assets/images/contact-round.svg?skipsvgo'
   import PresentationSvg from '@/assets/images/presentation.svg?skipsvgo'
   import LessonSvg from '@/assets/images/book-open-check.svg?skipsvgo'
-  import MeetingSvg from '@/assets/images/handshake.svg?skipsvgo'
   import PraySvg from '@/assets/images/message-circle-heart.svg?skipsvgo'
   import SunMoonSvg from '@/assets/images/sun-moon.svg?skipsvgo'
   import BookOpenSvg from '@/assets/images/book-open.svg?skipsvgo'
   import MusicSvg from '@/assets/images/music.svg?skipsvgo'
-  import DumbbellSvg from '@/assets/images/dumbbell.svg?skipsvgo'
-  import AwardSvg from '@/assets/images/award.svg?skipsvgo'
   import ChevronLeftSvg from '@/assets/images/chevron-left.svg?skipsvgo'
   import ChevronRightSvg from '@/assets/images/chevron-right.svg?skipsvgo'
   import { useLineApi } from '@/composables/useLineApi'
@@ -47,6 +44,8 @@
     quantity?: number | undefined | null
     unit?: string
   }
+
+  const taskId = ref<string>('')
 
   const basicTaskOptions = reactive<TaskOptions[]>([
     {
@@ -131,6 +130,8 @@
       const taskData = (await getTask(userId, dayOfMonth)) as Record<string, any>
       if (!taskData) return
 
+      taskId.value = taskData.id
+
       basicTaskOptions.forEach((option: { isChecked: any; id: string | number }) => {
         option.isChecked = Object.keys(taskData).includes(String(option.id)) ? taskData[String(option.id)] : false
       })
@@ -170,19 +171,27 @@
       dayOfMonth: Number(dayId),
       userId: authStore.userInformation.id,
       ...basicTaskPayload,
-      ...gospelTaskPayload
+      ...gospelTaskPayload,
+      ...(taskId.value ? { id: taskId.value } : {})
     }
 
-    await postTask(payload)
+    try {
+      await postTask(payload)
+      alert('儲存成功')
+      router.push(`/`)
+    } catch (error) {
+      console.error('Error saving task data:', error)
+      alert('儲存失敗，請稍後再試')
+    }
   }
 
   const goYesterday = () => {
-    if (Number(dayId) <= 1) return
+    if (Number(dayId) <= 6) return
     router.push(`/day/${Number(dayId) - 1}`)
   }
 
   const goTomorrow = () => {
-    if (Number(dayId) >= 31 || Number(dayId) >= today.value) return
+    if (Number(dayId) >= 19 || Number(dayId) >= today.value) return
     router.push(`/day/${Number(dayId) + 1}`)
   }
 </script>
@@ -270,18 +279,18 @@
       <button
         @click="goYesterday"
         class="flex items-center py-1 px-1 md:px-2 rounded text-[#d1760f] bg-[#d1760f]/10 hover:bg-[#d1760f] hover:text-white transition-all duration-100 cursor-pointer"
-        :class="{ 'opacity-50 pointer-events-none': Number(dayId) <= 1 }"
+        :class="{ 'opacity-50 pointer-events-none': Number(dayId) <= 6 }"
       >
         <ChevronLeftSvg class="w-4 h-4" />
-        <span class="hidden md:block text-xs wen-kai-mono whitespace-nowrap">昨日</span>
+        <span class="text-xs wen-kai-mono whitespace-nowrap">昨日</span>
       </button>
-      <Button :fn="saveData">儲存</Button>
+      <Button :disabled="Number(dayId) !== today" :fn="saveData">儲存</Button>
       <button
         @click="goTomorrow"
         class="flex items-center py-1 px-1 md:px-2 rounded text-[#d1760f] bg-[#d1760f]/10 hover:bg-[#d1760f] hover:text-white transition-all duration-100 cursor-pointer"
-        :class="{ 'opacity-50 pointer-events-none': Number(dayId) >= 31 || Number(dayId) >= today }"
+        :class="{ 'opacity-50 pointer-events-none': Number(dayId) >= 19 || Number(dayId) >= today }"
       >
-        <span class="hidden md:block text-xs wen-kai-mono whitespace-nowrap">明日</span>
+        <span class="text-xs wen-kai-mono whitespace-nowrap">明日</span>
         <ChevronRightSvg class="w-4 h-4" />
       </button>
     </div>

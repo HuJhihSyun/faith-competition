@@ -7,6 +7,7 @@
   import { useLineApi } from '@/composables/useLineApi'
 
   const { getResult } = useLineApi()
+  const authStore = useAuthStore()
 
   useSeoMeta({
     title: '無限榮耀神 | 查詢成績',
@@ -21,8 +22,11 @@
     ogImage: 'images/evangelism-cover.jpg'
   })
 
-  const goal = ref<number>(100)
+  const dayFromStart = ref<number>(new Date().getDate() - 6)
+  const goal = computed(() => Math.min(100 + dayFromStart.value * 20, 360))
+
   const summary = ref<number>(0)
+  const departmentScore = ref<number>(0)
 
   type DepartmentProgress = {
     label: string
@@ -119,6 +123,12 @@
         })
       }
       summary.value = departmentProgresses.reduce((acc: number, dept: { point: number }) => acc + dept.point, 0)
+      departmentScore.value =
+        departmentProgresses.find(
+          (dept: { department: number; gender?: boolean }) =>
+            Number(dept.department) === Number(authStore.userInformation.department) &&
+            (dept.gender === authStore.userInformation.gender || dept.gender === undefined)
+        )?.point || 0
     } catch (error) {
       console.error('Error fetching scores:', error)
     }
@@ -127,8 +137,28 @@
 
 <template>
   <div class="flex flex-col items-center justify-center">
+    <div>
+      <img
+        v-show="departmentScore < 100"
+        src="https://media.lawch.org/october-glory/images/gift-1.png"
+        alt="gift-1"
+        class="w-60 h-60 object-cover"
+      />
+      <img
+        v-show="departmentScore >= 100 && departmentScore < 200"
+        src="https://media.lawch.org/october-glory/images/gift-2.png"
+        alt="gift-2"
+        class="w-72 h-72 object-cover"
+      />
+      <img
+        v-show="departmentScore >= 200"
+        src="https://media.lawch.org/october-glory/images/gift-3.png"
+        alt="gift-3"
+        class="w-72 h-72 object-cover"
+      />
+    </div>
     <h3
-      class="mt-4 md:mt-6 text-xl md:text-2xl font-bold bg-gradient-to-br from-[#d1760f] to-[#f47c0e] inline-block text-transparent bg-clip-text montserrat"
+      class="mt-2 md:mt-4 text-xl md:text-2xl font-bold bg-gradient-to-br from-[#d1760f] to-[#f47c0e] inline-block text-transparent bg-clip-text montserrat"
     >
       <span class="wen-kai-mono text-lg md:text-xl">總積分：</span>{{ summary
       }}<span class="wen-kai-mono ml-1 text-lg md:text-xl">分</span>
@@ -145,7 +175,7 @@
         <div class="progress relative w-full h-4.5 bg-[#D97F17]/10 rounded overflow-hidden">
           <div
             class="progress-bar absolute left-0.5 top-1/2 -translate-y-1/2 h-3 bg-gradient-to-bl from-[#f47d0d]/60 to-[#D97F17] rounded-xs"
-            :style="{ width: `${(department.point / goal) * 100}%` }"
+            :style="{ width: `${Math.min((department.point / goal) * 100, 98.5)}%` }"
           ></div>
         </div>
         <h6 class="text-xs md:text-sm text-[#d1760f] wen-kai-mono whitespace-nowrap min-w-24 md:min-w-28 text-right">
