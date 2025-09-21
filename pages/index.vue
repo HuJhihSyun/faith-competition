@@ -5,13 +5,10 @@
   import ContactSvg from '@/assets/images/contact-round.svg?skipsvgo'
   import PresentationSvg from '@/assets/images/presentation.svg?skipsvgo'
   import LessonSvg from '@/assets/images/book-open-check.svg?skipsvgo'
-  import MeetingSvg from '@/assets/images/handshake.svg?skipsvgo'
   import PraySvg from '@/assets/images/message-circle-heart.svg?skipsvgo'
   import SunMoonSvg from '@/assets/images/sun-moon.svg?skipsvgo'
   import BookOpenSvg from '@/assets/images/book-open.svg?skipsvgo'
   import MusicSvg from '@/assets/images/music.svg?skipsvgo'
-  import ChevronLeftSvg from '@/assets/images/chevron-left.svg?skipsvgo'
-  import ChevronRightSvg from '@/assets/images/chevron-right.svg?skipsvgo'
   import { useLineApi } from '@/composables/useLineApi'
 
   const router = useRouter()
@@ -75,7 +72,6 @@
   const today = ref<number>(now.value.getDate())
   const monthId = ref<number>(now.value.getMonth() + 1)
   const dayId = ref<string>(today.value.toString())
-  const disabled = ref<boolean>(today.value !== Number(dayId))
 
   type TaskOptions = {
     title: string
@@ -230,7 +226,7 @@
   <div>
     <transition name="fade" mode="out-in">
       <div v-if="!currentStep">
-        <h3 class="text-[#D97F17] font-bold text-2xl text-center montserrat">2025</h3>
+        <h3 class="text-[#D97F17] font-bold text-2xl text-center sacramento">2025</h3>
         <h1
           class="text-[#D97F17] text-3xl sm:text-4xl md:text-5xl text-center wen-kai-mono py-3 lg:py-4 px-10 tracking-wider whitespace-nowrap"
         >
@@ -261,8 +257,8 @@
         <Subtitle>
           <template #title>無限榮耀神</template>
           <template #subtitle>
-            <span class="montserrat">2025</span>年<span class="montserrat">{{ monthId }}</span
-            >月<span class="montserrat">{{ dayId }}</span
+            <span class="sacramento">2025</span>年<span class="sacramento">{{ monthId }}</span
+            >月<span class="sacramento">{{ dayId }}</span
             >日
           </template>
         </Subtitle>
@@ -277,23 +273,12 @@
                 :key="taskOption.id"
                 class="w-full flex justify-start items-center gap-2 tracking-wider"
               >
-                <BasicCheckbox class="w-5 h-5" v-model="taskOption.isChecked" :disabled="disabled" />
+                <BasicCheckbox class="w-5 h-5" v-model="taskOption.isChecked" />
                 <div class="text-[#d1760f]">
                   <component :is="taskOption.icon" class="w-5 h-5" />
                 </div>
                 <h4 class="text-base md:text-lg wen-kai-mono text-[#d1760f] font-bold">
                   <span>{{ taskOption.title }}</span>
-                  <input
-                    v-if="taskOption.quantity !== null && taskOption.quantity !== undefined"
-                    :ref="`${taskOption.id}inputRef`"
-                    v-model="taskOption.quantity"
-                    type="text"
-                    class="w-10 lg:w-12 px-1 lg:px-2 py-0.5 mx-2 text-sm text-[#d1760f] montserrat border border-[#D97F17] outline-0 focus:border-b-2 focus:border-r-2 rounded text-center"
-                    :class="{
-                      'border-red-500 text-red-500': isFocused && !disabled,
-                      'pointer-events-none bg-[#d1760f]/10 text-[#d1760f]/50': disabled
-                    }"
-                  />
                   <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
                 </h4>
                 <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
@@ -310,7 +295,7 @@
                 :key="taskOption.id"
                 class="w-full flex justify-start items-center gap-2 tracking-wider"
               >
-                <BasicCheckbox class="w-5 h-5" v-model="taskOption.isChecked" :disabled="disabled" />
+                <BasicCheckbox class="w-5 h-5" v-model="taskOption.isChecked" />
                 <div class="text-[#d1760f]">
                   <component :is="taskOption.icon" class="w-5 h-5" />
                 </div>
@@ -321,10 +306,10 @@
                     :ref="`${taskOption.id}inputRef`"
                     v-model="taskOption.quantity"
                     type="text"
-                    class="w-10 lg:w-12 px-1 lg:px-2 py-0.5 mx-2 text-sm text-[#d1760f] montserrat border border-[#D97F17] outline-0 focus:border-b-2 focus:border-r-2 rounded text-center"
+                    class="w-10 lg:w-12 px-1 lg:px-2 py-0.5 mx-2 text-sm text-[#d1760f] sacramento border border-[#D97F17] outline-0 focus:border-b-2 focus:border-r-2 rounded text-center"
                     :class="{
-                      'border-red-500 text-red-500': isFocused && !disabled,
-                      'pointer-events-none bg-[#d1760f]/10 text-[#d1760f]/50': disabled || !taskOption.isChecked
+                      'border-red-500 text-red-500': isFocused,
+                      'pointer-events-none bg-[#d1760f]/10 text-[#d1760f]/50': !taskOption.isChecked
                     }"
                   />
                   <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
