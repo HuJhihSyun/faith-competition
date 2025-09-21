@@ -11,7 +11,7 @@
     id="default-layout"
     class="relative bg-[url(@/assets/images/bg-flower.webp)] bg-cover bg-no-repeat w-full h-screen flex items-center justify-center overflow-hidden"
   >
-    <div class="relative w-5/6 sm:w-4/5 md:w-3/5 lg:w-1/2 mx-auto z-40">
+    <div class="relative w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 mx-auto z-40">
       <slot />
     </div>
     <transition name="fade">
