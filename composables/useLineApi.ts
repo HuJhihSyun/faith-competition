@@ -25,10 +25,7 @@ export function useLineApi() {
 
   const getTask = async (userId: string, day: number) => {
     return await $fetch(`${baseUrl}/task/${userId}/${day}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${useAuthStore().jwt}`
-      }
+      method: 'GET'
     })
   }
 
@@ -44,10 +41,14 @@ export function useLineApi() {
   const postTask = async (data: Record<string, any>) => {
     return await $fetch(`${baseUrl}/task`, {
       method: 'POST',
-      body: data,
-      headers: {
-        Authorization: `Bearer ${useAuthStore().jwt}`
-      }
+      body: data
+    })
+  }
+
+  const postLogin = async (data: Record<string, any>) => {
+    return await $fetch(`${baseUrl}/login`, {
+      method: 'POST',
+      body: data
     })
   }
 
@@ -57,6 +58,7 @@ export function useLineApi() {
     getResult,
     getTask,
     getAllTaskScores,
-    postTask
+    postTask,
+    postLogin
   }
 }

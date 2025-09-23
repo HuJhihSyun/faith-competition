@@ -18,25 +18,25 @@
 
   const NavbarLinkItems: NavbarLinkItem[] = [
     {
-      title: '我的日曆',
+      title: '填寫資料',
       path: 'index',
-      icon: CalendarSvg
+      icon: UserEditSvg
     },
-    {
-      title: '成績查詢',
-      path: 'result',
-      icon: ChartSvg
-    },
+    // {
+    //   title: '成績查詢',
+    //   path: 'result',
+    //   icon: ChartSvg
+    // },
     {
       title: '抽獎名單',
       path: 'info',
       icon: AwardSvg
-    },
-    {
-      title: '資料填寫',
-      path: 'setting',
-      icon: UserEditSvg
     }
+    // {
+    //   title: '資料填寫',
+    //   path: 'setting',
+    //   icon: UserEditSvg
+    // }
   ]
 
   const toggleInput = ref<HTMLInputElement | null>(null)
@@ -52,7 +52,7 @@
   <div class="fixed group container w-0 left-2 top-10 justify-start items-center z-50">
     <input ref="toggleInput" type="checkbox" id="toggle" class="appearance-none" checked />
     <label
-      class="button absolute bg-gradient-to-t from-white/0 to-white/20 border-b-2 border-r-2 border-[#D97F17] backdrop-blur-xs shadow-lg z-10 px-4 w-[220px] h-13.5 rounded-xl cursor-pointer flex justify-start items-center transition-all duration-300 overflow-hidden before:absolute before:content-[''] before:w-5 before:h-0.5 before:bg-[#d1760f] before:rotate-225 before:transition-all before:duration-400 after:absolute after:content-[''] after:w-5 after:h-0.5 after:bg-[#d1760f] after:rotate-135 after:transition-all after:duration-400 group-[:has(input:checked)]:before:rotate-90 group-[:has(input:checked)]:after:rotate-0 group-[:has(input:checked)]:transition-all group-[:has(input:checked)]:duration-200 group-[:has(input:checked)]:w-13"
+      class="button absolute bg-gradient-to-t from-white/0 to-white/20 border-b-2 border-r-2 border-[#D97F17] backdrop-blur-xs shadow-lg z-10 px-4 w-[132px] h-13.5 rounded-xl cursor-pointer flex justify-start items-center transition-all duration-300 overflow-hidden before:absolute before:content-[''] before:w-5 before:h-0.5 before:bg-[#d1760f] before:rotate-225 before:transition-all before:duration-400 after:absolute after:content-[''] after:w-5 after:h-0.5 after:bg-[#d1760f] after:rotate-135 after:transition-all after:duration-400 group-[:has(input:checked)]:before:rotate-90 group-[:has(input:checked)]:after:rotate-0 group-[:has(input:checked)]:transition-all group-[:has(input:checked)]:duration-200 group-[:has(input:checked)]:w-13"
       for="toggle"
     >
       <nav

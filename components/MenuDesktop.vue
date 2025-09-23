@@ -18,25 +18,25 @@
 
   const NavbarLinkItems: NavbarLinkItem[] = [
     {
-      title: '我的日曆',
+      title: '填寫資料',
       path: 'index',
-      icon: CalendarSvg
+      icon: UserEditSvg
     },
-    {
-      title: '成績查詢',
-      path: 'result',
-      icon: ChartSvg
-    },
+    // {
+    //   title: '成績查詢',
+    //   path: 'result',
+    //   icon: ChartSvg
+    // },
     {
       title: '抽獎名單',
       path: 'info',
       icon: AwardSvg
-    },
-    {
-      title: '資料填寫',
-      path: 'setting',
-      icon: UserEditSvg
     }
+    // {
+    //   title: '資料填寫',
+    //   path: 'setting',
+    //   icon: UserEditSvg
+    // }
   ]
 </script>
 

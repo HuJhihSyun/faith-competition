@@ -20,7 +20,7 @@
 
   const now = ref<Date>(new Date())
   const today = ref<number>(now.value.getDate())
-  const disabled = ref<boolean>(today.value !== Number(dayId))
+  const disabled = today.value >= 6 && today.value <= 19
 
   useSeoMeta({
     title: `無限榮耀神 | 2025年10月${dayId}日`,
@@ -113,13 +113,13 @@
   const isFocused = ref<boolean>(false)
 
   onMounted(async () => {
-    if (!authStore.userInformation.id) return
-    await fetchTask(authStore.userInformation.id, Number(dayId))
+    if (!authStore.jwt) return
+    await fetchTask(authStore.jwt, Number(dayId))
   })
 
   watch(
-    () => authStore.userInformation.id,
-    async (newId: string) => {
+    () => authStore.jwt,
+    async (newId: string | null, oldId: string | null) => {
       if (!newId) return
       await fetchTask(newId, Number(dayId))
     }
@@ -169,7 +169,7 @@
 
     const payload = {
       dayOfMonth: Number(dayId),
-      userId: authStore.userInformation.id,
+      userId: authStore.jwt,
       ...basicTaskPayload,
       ...gospelTaskPayload,
       ...(taskId.value ? { id: taskId.value } : {})
@@ -178,7 +178,6 @@
     try {
       await postTask(payload)
       alert('儲存成功')
-      router.push(`/`)
     } catch (error) {
       console.error('Error saving task data:', error)
       alert('儲存失敗，請稍後再試')
@@ -284,7 +283,7 @@
         <ChevronLeftSvg class="w-4 h-4" />
         <span class="text-xs wen-kai-mono whitespace-nowrap">昨日</span>
       </button>
-      <Button :disabled="Number(dayId) !== today" :fn="saveData">儲存</Button>
+      <Button :disabled="disabled" :fn="saveData">儲存</Button>
       <button
         @click="goTomorrow"
         class="flex items-center py-1 px-1 md:px-2 rounded text-[#d1760f] bg-[#d1760f]/10 hover:bg-[#d1760f] hover:text-white transition-all duration-100 cursor-pointer"
