@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const { getLotteryList } = useLineApi()
+  const { getLotteryList, getLottery } = useLineApi()
 
   useSeoMeta({
     title: '光輝十月 | 查詢成績',
@@ -15,22 +15,63 @@
   })
 
   type InformationCard = {
+    id: string
+    name: string
+    department: string | number
+    gender: boolean
+    taskType: string
+  }
+
+  enum DEPARTMENT {
+    GALAXY = 1,
+    SHINING_STAR = 2,
+    CAMPUS = 3,
+    YOUTH = 4,
+    FAMILY = 5,
+    OLDER = 6
+  }
+
+  type DepartmentType = {
     id: number
     name: string
-    department: string
-    gender: boolean
-    score: number
   }
+
+  const Department: DepartmentType[] = [
+    { id: DEPARTMENT.GALAXY, name: '銀河水' },
+    { id: DEPARTMENT.SHINING_STAR, name: 'SS' },
+    { id: DEPARTMENT.CAMPUS, name: 'Campus' },
+    { id: DEPARTMENT.YOUTH, name: '青年部' },
+    { id: DEPARTMENT.FAMILY, name: '家庭局' },
+    { id: DEPARTMENT.OLDER, name: '長年部' }
+  ]
 
   const informationCardArray = reactive<InformationCard[]>([])
 
   const fetchLotteryList = async () => {
-    const result = (await getLotteryList(1, 30)) as InformationCard[]
-    informationCardArray.splice(0, informationCardArray.length, ...result)
+    const result = (await getLotteryList(1, 19)) as InformationCard[]
+    informationCardArray.push(
+      ...Object.entries(result)
+        .map(([_, value]) => value)
+        .flat()
+        .map((item) => ({
+          id: crypto.randomUUID(),
+          name: item.name,
+          department: `${Number(item.department) > 0 && Number(item.department) < 4 ? (item.gender ? '弟兄' : '姐妹') : ''}${Department.find((dept) => dept.id === Number(item.department))?.name || '未知部門'}`,
+          gender: item.gender,
+          taskType: item.taskType
+        }))
+    )
+    console.log(informationCardArray)
+  }
+
+  const fetchLottery = async () => {
+    const result = (await getLottery()) as InformationCard[]
+    console.log(result)
   }
 
   onMounted(() => {
     fetchLotteryList()
+    fetchLottery()
   })
 </script>
 
@@ -38,7 +79,7 @@
   <div>
     <Subtitle>
       <template #title>無限榮耀神</template>
-      <template #subtitle>中獎名單查詢</template>
+      <template #subtitle>入圍名單查詢</template>
     </Subtitle>
     <main
       class="flex flex-col items-center max-w-[500px] mt-6 pt-2 px-2 border border-b-2 border-r-2 border-[#D97F17] backdrop-blur-xs rounded-md max-h-[70vh] overflow-y-auto mx-auto"
@@ -51,7 +92,7 @@
           :name="item.name"
           :department="item.department"
           :gender="item.gender"
-          :score="item.score"
+          :taskType="item.taskType"
         />
       </template>
       <template v-else>

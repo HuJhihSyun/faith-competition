@@ -60,6 +60,13 @@ export function useLineApi() {
     })
   }
 
+  // 中獎名單
+  const getLottery = async () => {
+    return await $fetch(`${baseUrl}/lottery`, {
+      method: 'GET'
+    })
+  }
+
   return {
     getUserInfo,
     userUpdate,
@@ -68,6 +75,7 @@ export function useLineApi() {
     getAllTaskScores,
     postTask,
     postLogin,
-    getLotteryList
+    getLotteryList,
+    getLottery
   }
 }
