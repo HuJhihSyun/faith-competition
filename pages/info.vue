@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  const { getLotteryList } = useLineApi()
+
   useSeoMeta({
     title: '光輝十月 | 查詢成績',
     author: '© 2025 Love and Word Church All rights reserved.',
@@ -21,6 +23,15 @@
   }
 
   const informationCardArray = reactive<InformationCard[]>([])
+
+  const fetchLotteryList = async () => {
+    const result = (await getLotteryList(1, 30)) as InformationCard[]
+    informationCardArray.splice(0, informationCardArray.length, ...result)
+  }
+
+  onMounted(() => {
+    fetchLotteryList()
+  })
 </script>
 
 <template>

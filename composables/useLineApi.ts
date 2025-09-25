@@ -45,10 +45,18 @@ export function useLineApi() {
     })
   }
 
+  // 登入
   const postLogin = async (data: Record<string, any>) => {
     return await $fetch(`${baseUrl}/login`, {
       method: 'POST',
       body: data
+    })
+  }
+
+  // 抽獎名單
+  const getLotteryList = async (start: number, end: number) => {
+    return await $fetch(`${baseUrl}/task/getLotteryList?start=${start}&end=${end}`, {
+      method: 'GET'
     })
   }
 
@@ -59,6 +67,7 @@ export function useLineApi() {
     getTask,
     getAllTaskScores,
     postTask,
-    postLogin
+    postLogin,
+    getLotteryList
   }
 }
