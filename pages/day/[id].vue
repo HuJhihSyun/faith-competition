@@ -51,28 +51,28 @@
     {
       title: '晨更',
       id: 'morning',
-      subtitle: '1次3分',
+      subtitle: '1次',
       icon: markRaw(SunMoonSvg),
       isChecked: false
     },
     {
       title: '讀經',
       id: 'bible',
-      subtitle: '4章2分',
+      subtitle: '4章',
       icon: markRaw(BookOpenSvg),
       isChecked: false
     },
     {
       title: '讚美',
       id: 'praise',
-      subtitle: '2首1分',
+      subtitle: '2首',
       icon: markRaw(MusicSvg),
       isChecked: false
     },
     {
       title: '禱告',
       id: 'pray',
-      subtitle: '5分鐘1分',
+      subtitle: '5分鐘',
       icon: markRaw(PraySvg),
       isChecked: false,
       unit: '10分鐘'
@@ -83,7 +83,7 @@
     {
       title: '連結',
       id: 'contact',
-      subtitle: '1人1分',
+      subtitle: '1人',
       icon: markRaw(ContactSvg),
       isChecked: false,
       quantity: 0,
@@ -92,7 +92,7 @@
     {
       title: '聽課',
       id: 'lesson',
-      subtitle: '1次1分',
+      subtitle: '1次',
       icon: markRaw(LessonSvg),
       isChecked: false,
       quantity: 0,
@@ -101,7 +101,7 @@
     {
       title: '講義',
       id: 'presentation',
-      subtitle: '1次1分',
+      subtitle: '1次',
       icon: markRaw(PresentationSvg),
       isChecked: false,
       quantity: 0,
@@ -269,7 +269,7 @@
               />
               <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
             </h4>
-            <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
+            <!-- <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5> -->
           </div>
         </div>
       </section>

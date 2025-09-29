@@ -15,7 +15,7 @@
 
   const props = withDefaults(defineProps<InputTextProps>(), {
     modelValue: '',
-    notice: '請輸入您的暱稱',
+    notice: '請輸入您的本名',
     hasButton: '',
     disabled: false,
     fn: () => {}
