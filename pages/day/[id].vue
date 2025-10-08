@@ -211,7 +211,7 @@
         <h3 class="relative text-[#D97F17] font-bold text-xl md:text-2xl wen-kai-mono mb-2 md:mb-4 tracking-widest">
           基本信仰
         </h3>
-        <div class="flex flex-col gap-3 md:gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4">
           <div
             v-for="taskOption in basicTaskOptions"
             :key="taskOption.id"
@@ -234,9 +234,13 @@
                   'pointer-events-none bg-[#d1760f]/10 text-[#d1760f]/50': disabled
                 }"
               />
-              <span class="text-sm wen-kai-mono text-[#d1760f]">{{ taskOption.unit }}</span>
+              <span
+                class="text-sm wen-kai-mono text-[#d1760f]"
+                :class="{ 'hidden md:inline-block': taskOption.id === 'pray' }"
+                >{{ taskOption.unit }}</span
+              >
             </h4>
-            <h5 class="text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
+            <h5 class="text-xs md:text-sm wen-kai-mono text-[#d1760f]">({{ taskOption.subtitle }})</h5>
           </div>
         </div>
       </section>
