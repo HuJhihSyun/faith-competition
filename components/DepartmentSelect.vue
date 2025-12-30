@@ -3,12 +3,25 @@
   import ChevronSvg from '@/assets/images/chevron-down.svg?skipsvgo'
 
   enum DEPARTMENT {
-    GALAXY = 1,
-    SHINING_STAR = 2,
-    CAMPUS = 3,
-    YOUTH = 4,
-    FAMILY = 5,
-    OLDER = 6
+    VICTORY = 1, // 主勝利
+    SHIN_YONG = 2, // 信榮
+    YONG_MING = 3, // 永明
+    YI_LAN_WORDS = 4, // 宜蘭主話語
+    LORD_LOVE = 5, // 主愛
+    LORD_MING = 6, // 主大明
+    FAITH_LORD = 7, // 信主
+    LOVE_AND_WORD = 8, // 愛與話語
+    TAIPEI_WORDS = 9, // 台北主話語
+    HEAVEN_RESIDENTS = 10, // 天民
+    LORD_HOPE_LIGHT = 11, // 主盼望光
+    LORD_HAPPINESS = 12, // 主幸福
+    LORD_PEACE_LIGHT = 13, // 主和睦光
+    HOLY_SPIRIT = 14, // 聖靈
+    LORD_LIFE = 15, // 主生命
+    LORD_EXPECTATION = 16, // 主盼望
+    LORD_ROCK = 17, // 主磐石
+    LORD_YONG = 18, // 主大永
+    PRACTICE = 19 // 實踐
   }
 
   type DepartmentType = {
@@ -17,12 +30,25 @@
   }
 
   const Department: DepartmentType[] = [
-    { id: DEPARTMENT.GALAXY, name: '銀河水' },
-    { id: DEPARTMENT.SHINING_STAR, name: 'SS' },
-    { id: DEPARTMENT.CAMPUS, name: 'Campus' },
-    { id: DEPARTMENT.YOUTH, name: '青年部' },
-    { id: DEPARTMENT.FAMILY, name: '家庭局' },
-    { id: DEPARTMENT.OLDER, name: '長年部' }
+    { id: DEPARTMENT.VICTORY, name: '主勝利' },
+    { id: DEPARTMENT.SHIN_YONG, name: '信榮' },
+    { id: DEPARTMENT.YONG_MING, name: '永明' },
+    { id: DEPARTMENT.YI_LAN_WORDS, name: '宜蘭主話語' },
+    { id: DEPARTMENT.LORD_LOVE, name: '主愛' },
+    { id: DEPARTMENT.LORD_MING, name: '主大明' },
+    { id: DEPARTMENT.FAITH_LORD, name: '信主' },
+    { id: DEPARTMENT.LOVE_AND_WORD, name: '愛與話語' },
+    { id: DEPARTMENT.TAIPEI_WORDS, name: '台北主話語' },
+    { id: DEPARTMENT.HEAVEN_RESIDENTS, name: '天民' },
+    { id: DEPARTMENT.LORD_HOPE_LIGHT, name: '主盼望光' },
+    { id: DEPARTMENT.LORD_HAPPINESS, name: '主幸福' },
+    { id: DEPARTMENT.LORD_PEACE_LIGHT, name: '主和睦光' },
+    { id: DEPARTMENT.HOLY_SPIRIT, name: '聖靈' },
+    { id: DEPARTMENT.LORD_LIFE, name: '主生命' },
+    { id: DEPARTMENT.LORD_EXPECTATION, name: '主盼望' },
+    { id: DEPARTMENT.LORD_ROCK, name: '主磐石' },
+    { id: DEPARTMENT.LORD_YONG, name: '主大永' },
+    { id: DEPARTMENT.PRACTICE, name: '實踐' }
   ]
 
   interface DepartmentSelectProps {
@@ -48,14 +74,12 @@
       name="department"
       id="department"
       v-model="modelValue"
-      class="relative flex w-full mx-auto px-5 py-3 appearance-none overflow-hidden rounded-md backdrop-blur-md border border-b-2 border-r-2 border-[#D97F17] text-center text-[#d1760f] wen-kai-mono font-bold tracking-wide align-middle outline-0 transition-all duration-300 leading-[1.3]"
+      class="relative flex w-full mx-auto px-5 py-3 appearance-none overflow-hidden rounded-md backdrop-blur-md border border-b-2 border-r-2 border-white input-shadow text-center text-white text-shadow wen-kai-mono font-bold tracking-wide align-middle outline-0 transition-all duration-300 leading-[1.3]"
       placeholder="請選擇部門"
     >
-      <option :value="0" disabled selected>請選擇部門</option>
-      <template v-for="item in Department">
-        <option :value="item.id">{{ item.name }}</option>
-      </template>
+      <option :value="0" disabled selected>請選擇教會</option>
+      <option v-for="item in Department" :key="item.id" :value="item.id">{{ item.name }}</option>
     </select>
-    <ChevronSvg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#d1760f] pointer-events-none" />
+    <ChevronSvg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white text-shadow pointer-events-none" />
   </div>
 </template>
