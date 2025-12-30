@@ -30,7 +30,7 @@
   >
     <input
       v-model="modelValue"
-      class="text-center grow tracking-wide align-middle placeholder:text-white text-white text-shadow wen-kai-mono font-bold border-none outline-0"
+      class="text-center grow tracking-wide align-middle placeholder:text-orange-100 text-white text-shadow wen-kai-mono font-bold border-none outline-0"
       type="text"
       :placeholder="notice"
     />

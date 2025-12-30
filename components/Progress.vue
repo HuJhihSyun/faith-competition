@@ -8,11 +8,11 @@
 
   const borderColor = computed(() => {
     if (props.percentage < 35) {
-      return 'border-yellow-500'
+      return 'border-yellow-300'
     } else if (props.percentage < 75) {
-      return 'border-amber-500'
+      return 'border-amber-200'
     } else if (props.percentage >= 75) {
-      return 'border-orange-500'
+      return 'border-orange-200'
     } else {
       return 'border-[#d1760f]'
     }
@@ -20,11 +20,11 @@
 
   const shadowColor = computed(() => {
     if (props.percentage < 35) {
-      return 'shadow-yellow-500'
+      return 'shadow-yellow-300'
     } else if (props.percentage < 75) {
-      return 'shadow-amber-500'
+      return 'shadow-amber-300'
     } else if (props.percentage >= 75) {
-      return 'shadow-orange-400'
+      return 'shadow-orange-300'
     } else {
       return 'shadow-[#d1760f]'
     }
@@ -32,7 +32,7 @@
 
   const waterColor = computed(() => {
     if (props.percentage < 35) {
-      return 'bg-yellow-500/80'
+      return 'bg-yellow-300/80'
     } else if (props.percentage < 75) {
       return 'bg-amber-500/80'
     } else if (props.percentage >= 75) {
@@ -44,7 +44,7 @@
 
   const waterShadowColor = computed(() => {
     if (props.percentage < 35) {
-      return 'shadow-yellow-500'
+      return 'shadow-yellow-300'
     } else if (props.percentage < 75) {
       return 'shadow-amber-500'
     } else if (props.percentage >= 75) {
@@ -56,7 +56,7 @@
 
   const textColor = computed(() => {
     if (props.percentage < 35) {
-      return 'bg-gradient-to-b from-yellow-500 to-yellow-100 inline-block text-transparent bg-clip-text'
+      return 'bg-gradient-to-b from-yellow-300 to-yellow-100 inline-block text-transparent bg-clip-text'
     } else if (props.percentage < 75) {
       return 'bg-gradient-to-b from-amber-400 to-amber-100 inline-block text-transparent bg-clip-text'
     } else if (props.percentage >= 75) {
@@ -70,7 +70,7 @@
 <template>
   <div>
     <div
-      class="progress relative rounded-full w-[250px] h-[250px] border-4 shadow-[0_0_2px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out"
+      class="progress backdrop-blur-xs relative rounded-full w-[250px] h-[250px] border-4 shadow-[0_0_2px_rgba(0,0,0,0.2)] transition-all duration-1000 ease-in-out"
       :class="[borderColor, shadowColor]"
     >
       <div

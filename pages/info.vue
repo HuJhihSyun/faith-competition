@@ -3,13 +3,13 @@
 
   useSeoMeta({
     title: '全國青年部榮耀神15天｜查詢成績',
-    author: '© 2025 Love and Word Church All rights reserved.',
+    author: '© 2026 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
-      '攝理人尊稱為「老師」的鄭明析牧師，領受了神交付的使命，帶著二十一年當中在山上修道磨練而向主學習來的時代福音，就在那一天，在神指定的地點，呼喊起新時代話語，宣告了成約攝理歷史的開始。',
+      '在奔跑之年，想用最簡單的方式參與宣教嗎？現在，只要動動你的手指，就能成為福音的推手！本次活動「限定 YouTube 平台」，讓我們集中火力，把見證推向百萬點閱！我們的影片充滿正能量，與你分享：職場浴火重生見證、轉職恩典、激勵人心的生命故事！',
     ogTitle: '全國青年部榮耀神15天｜查詢成績',
     ogDescription:
-      '攝理人尊稱為「老師」的鄭明析牧師，領受了神交付的使命，帶著二十一年當中在山上修道磨練而向主學習來的時代福音，就在那一天，在神指定的地點，呼喊起新時代話語，宣告了成約攝理歷史的開始。',
+      '在奔跑之年，想用最簡單的方式參與宣教嗎？現在，只要動動你的手指，就能成為福音的推手！本次活動「限定 YouTube 平台」，讓我們集中火力，把見證推向百萬點閱！我們的影片充滿正能量，與你分享：職場浴火重生見證、轉職恩典、激勵人心的生命故事！',
     ogUrl: 'https://www.loveandword.tw/',
     ogImage: 'images/evangelism-cover.png'
   })
@@ -96,7 +96,9 @@
 
 <template>
   <div>
-    <h3 class="text-[#D97F17] text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">查詢成績</h3>
+    <h3 class="text-white text-shadow text-2xl md:text-3xl text-center mb-5 wen-kai-mono whitespace-nowrap">
+      查詢成績
+    </h3>
     <div class="max-w-[500px] mx-auto">
       <InputText
         v-model="searchName"

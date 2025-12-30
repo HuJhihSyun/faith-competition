@@ -2,24 +2,23 @@
   import { useLocalStorage } from '@vueuse/core'
   import MaleSvg from '@/assets/images/male.svg?skipsvgo'
   import FemaleSvg from '@/assets/images/female.svg?skipsvgo'
-  import ContactSvg from '@/assets/images/contact-round.svg?skipsvgo'
-  import PresentationSvg from '@/assets/images/presentation.svg?skipsvgo'
-  import LessonSvg from '@/assets/images/book-open-check.svg?skipsvgo'
-  import MeetingSvg from '@/assets/images/handshake.svg?skipsvgo'
-  import PraySvg from '@/assets/images/message-circle-heart.svg?skipsvgo'
+  import ClickSvg from '@/assets/images/click.svg?skipsvgo'
+  import ThumbSvg from '@/assets/images/thumb.svg?skipsvgo'
+  import ShareSvg from '@/assets/images/share.svg?skipsvgo'
+  import MessageSvg from '@/assets/images/message.svg?skipsvgo'
   import { useLineApi } from '@/composables/useLineApi'
 
   const router = useRouter()
 
   useSeoMeta({
     title: '全國青年部榮耀神15天｜百萬金手指',
-    author: '© 2025 Love and Word Church All rights reserved.',
+    author: '© 2026 Love and Word Church All rights reserved.',
     keywords: '教會,傳道,空提,信仰,榮耀神',
     description:
-      '神說：「我是阿拉法，我是俄梅戛，是昔在、今在、以後永在的全能者。」講到阿拉法，主角就是神。而攝理，廣義來說，就是神的歷史，在舊約時代，神展開舊約層級的攝理歷史；在新約時代，神展開新約層級的攝理歷史；在現今，神則展開完成級的成約攝理歷史。如此，若要講到攝理的起點，其實就等於是在講神的起點。然而，神昔在、今在、永在，這起點，實在沒辦法說是哪一天，真要說，也只能說，那就是「初」。',
+      '在奔跑之年，想用最簡單的方式參與宣教嗎？現在，只要動動你的手指，就能成為福音的推手！本次活動「限定 YouTube 平台」，讓我們集中火力，把見證推向百萬點閱！我們的影片充滿正能量，與你分享：職場浴火重生見證、轉職恩典、激勵人心的生命故事！',
     ogTitle: '全國青年部榮耀神15天｜百萬金手指',
     ogDescription:
-      '神說：「我是阿拉法，我是俄梅戛，是昔在、今在、以後永在的全能者。」講到阿拉法，主角就是神。而攝理，廣義來說，就是神的歷史，在舊約時代，神展開舊約層級的攝理歷史；在新約時代，神展開新約層級的攝理歷史；在現今，神則展開完成級的成約攝理歷史。如此，若要講到攝理的起點，其實就等於是在講神的起點。然而，神昔在、今在、永在，這起點，實在沒辦法說是哪一天，真要說，也只能說，那就是「初」。',
+      '在奔跑之年，想用最簡單的方式參與宣教嗎？現在，只要動動你的手指，就能成為福音的推手！本次活動「限定 YouTube 平台」，讓我們集中火力，把見證推向百萬點閱！我們的影片充滿正能量，與你分享：職場浴火重生見證、轉職恩典、激勵人心的生命故事！',
     ogUrl: 'https://www.loveandword.tw/',
     ogImage: 'images/evangelism-cover.png'
   })
@@ -76,39 +75,32 @@
 
   const taskOptions: TaskOptions[] = [
     {
-      title: '連結',
-      id: 'contact',
-      subtitle: '7 分 / 每 1 人',
-      content: '以「留到聯絡方式」或「生命填寫夢想表單」為標準',
-      icon: markRaw(ContactSvg)
+      title: '點閱',
+      id: 'click',
+      subtitle: '10 分 / 個',
+      content: '點開 youtube(podcast) 連結：每一集即得 10 分 (只要點開，不用收聽)',
+      icon: markRaw(ClickSvg)
     },
     {
-      title: '講義',
-      id: 'presentation',
-      subtitle: '10 分 / 每 1 次',
-      content: '由講師填寫',
-      icon: markRaw(PresentationSvg)
+      title: '按攢',
+      id: 'thumb',
+      subtitle: '50 分 / 個',
+      content: '點個讚支持好內容得 50 分',
+      icon: markRaw(ThumbSvg)
     },
     {
-      title: '聽課',
-      id: 'lesson',
-      subtitle: '10 分 / 每 1 次',
-      content: '由生命管理者填寫',
-      icon: markRaw(LessonSvg)
+      title: '分享',
+      id: 'share',
+      subtitle: '50 分 / 人',
+      content: '傳給親友或新朋友得 50 分，好友也點讚同樣可以持續累計積分喔！',
+      icon: markRaw(ShareSvg)
     },
     {
-      title: '見面',
-      id: 'meeting',
-      subtitle: '3 分 / 每 1 人',
-      content: '「陪跑」新生聽課、運動、吃飯、線上通話或固禱皆可',
-      icon: markRaw(MeetingSvg)
-    },
-    {
-      title: '禱告',
-      id: 'pray',
-      subtitle: '3 分 / 每 5 分鐘',
-      content: '為「傳道生命」、「宣教目標」之禱告皆可計入',
-      icon: markRaw(PraySvg)
+      title: '留言',
+      id: 'message',
+      subtitle: '100 分 / 集',
+      content: '回饋ㄧ集內容得 100 分',
+      icon: markRaw(MessageSvg)
     }
   ]
 
@@ -157,7 +149,7 @@
           奔跑吧
         </h3>
         <h1
-          class="text-white text-shadow text-4xl sm:text-4xl md:text-5xl text-center wen-kai-mono py-3 lg:py-6 px-10 whitespace-nowrap"
+          class="text-white text-shadow text-3xl sm:text-4xl md:text-5xl text-center wen-kai-mono py-3 lg:py-6 sm:px-4 md:px-8 lg:px-10"
         >
           全國青年部榮耀神<span class="inline-block mx-1 tracking-tight">15</span>天
         </h1>
@@ -183,8 +175,10 @@
         </div>
       </div>
       <div v-else>
-        <h3 class="text-[#d1760f] text-2xl md:text-3xl text-center mb-4 wen-kai-mono whitespace-nowrap">榮耀神項目</h3>
-        <main class="flex flex-col items-center mx-auto gap-2">
+        <h3 class="text-white text-shadow text-2xl md:text-3xl text-center mb-4 wen-kai-mono whitespace-nowrap">
+          榮耀神項目
+        </h3>
+        <main class="flex flex-col items-center mx-auto gap-3">
           <TaskOption v-for="taskOption in taskOptions" :key="taskOption.id" @click="showConfirmModal(taskOption.id)">
             <template #title>{{ taskOption.title }}</template>
             <template #subtitle>{{ taskOption.subtitle }}</template>
