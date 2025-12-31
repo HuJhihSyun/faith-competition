@@ -20,7 +20,7 @@
 
   const point = ref<number>(0)
   const percentage = ref<number>(0)
-  const goal = ref<number>(1978)
+  const goal = ref<number>(30000)
 
   type TaskProgress = {
     title: string

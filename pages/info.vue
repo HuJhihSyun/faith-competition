@@ -110,19 +110,19 @@
     </div>
     <main
       v-if="informationCardArray.length"
-      class="flex flex-col items-center max-w-[500px] mt-6 pt-2 px-2 border border-b-2 border-r-2 border-[#D97F17] backdrop-blur-xs rounded-md max-h-[70vh] overflow-y-auto mx-auto"
+      class="flex flex-col items-center max-w-[500px] mt-6 pt-2 px-2 border border-b-2 border-r-2 border-white input-shadow backdrop-blur-xs rounded-md max-h-[70vh] overflow-y-auto mx-auto"
     >
-      <template v-for="item in informationCardArray" :key="item.id">
-        <InformationCard
-          class="mb-2"
-          :name="item.name"
-          :church="item.church"
-          :gender="item.gender"
-          :score="item.score"
-        />
-      </template>
+      <InformationCard
+        v-for="item in informationCardArray"
+        :key="item.id"
+        class="mb-2"
+        :name="item.name"
+        :church="item.church"
+        :gender="item.gender"
+        :score="item.score"
+      />
     </main>
-    <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-[#d1760f] wen-kai-mono mt-6">
+    <h6 v-if="!informationCardArray.length && showAlert" class="text-center text-white text-shadow wen-kai-mono mt-6">
       未查詢到名稱為 {{ searchName }} 的成績
     </h6>
   </div>
