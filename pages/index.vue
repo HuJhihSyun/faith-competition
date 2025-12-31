@@ -77,8 +77,8 @@
     {
       title: '點閱',
       id: 'click',
-      subtitle: '10 分 / 個',
-      content: '點開 youtube(podcast) 連結：每一集即得 10 分 (只要點開，不用收聽)',
+      subtitle: '10 分 / 集',
+      content: '點開 youtube(podcast) 連結：一集得 10 分 (只要點開超過 3 秒，不用收聽)',
       icon: markRaw(ClickSvg)
     },
     {
@@ -92,7 +92,7 @@
       title: '分享',
       id: 'share',
       subtitle: '50 分 / 人',
-      content: '傳給親友或新朋友得 50 分，好友也點讚同樣可以持續累計積分喔！',
+      content: '傳給親友或新朋友得 50 分',
       icon: markRaw(ShareSvg)
     },
     {
@@ -120,7 +120,6 @@
   const { postLine } = useLineApi()
 
   const submitData = async (payloadData: Record<string, any>) => {
-    console.log('payloadData', payloadData)
     const response = await postLine(payloadData)
   }
 
@@ -157,7 +156,7 @@
         <h2
           class="relative text-white text-shadow font-bold text-xl sm:text-2xl md:text-3xl text-center wen-kai-mono mb-10 flex justify-center items-center before:content-[''] before:w-10 md:before:w-20 before:h-[1px] before:bg-white after:content-[''] after:w-10 md:after:w-20 after:h-[1px] after:bg-white"
         >
-          <span class="inline-block px-4">百萬金手指</span>
+          <span class="inline-block px-4">Podcast 百萬金手指</span>
         </h2>
         <div class="flex flex-col items-center mx-auto">
           <InputText :class="{ 'bg-red-400/80': isNameFalse }" v-model="userInformation.name" />

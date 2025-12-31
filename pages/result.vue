@@ -67,7 +67,6 @@
   const fetchResult = async () => {
     const res: any = await getLineResult()
     const result = JSON.parse(res)
-    console.log('result', result)
 
     TaskProgresses.forEach((taskProgress: { point: any; id: string; times: any }) => {
       taskProgress.point = result.score[taskProgress.id]
