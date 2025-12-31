@@ -41,11 +41,10 @@
   })
 
   enum TaskOptionId {
-    contact = 0,
-    presentation = 1,
-    lesson = 2,
-    meeting = 3,
-    pray = 4
+    click = 0,
+    thumb = 1,
+    share = 2,
+    message = 3
   }
 
   type ConfirmPayloadType = {

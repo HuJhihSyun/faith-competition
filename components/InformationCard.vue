@@ -1,14 +1,14 @@
 <script setup lang="ts">
   interface InputTextProps {
     name: string
-    department: string
+    church: string
     gender: boolean
     score: number
   }
 
   const props = withDefaults(defineProps<InputTextProps>(), {
     name: '',
-    department: '',
+    church: '',
     gender: false,
     score: 0
   })
@@ -58,7 +58,7 @@
     <div class="flex justify-between items-center mt-1">
       <h6 class="text-xs sm:text-sm text-[#d1760f] wen-kai-mono">
         <span>所屬部門：</span>
-        {{ department }}
+        {{ church }}
       </h6>
       <h6 class="text-xs sm:text-sm text-[#d1760f] wen-kai-mono">
         <span>累積分數：</span>

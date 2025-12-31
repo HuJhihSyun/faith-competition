@@ -43,7 +43,7 @@
   type InformationCard = {
     id: number
     name: string
-    department: string
+    church: string
     gender: boolean
     score: number
   }
@@ -116,7 +116,7 @@
         <InformationCard
           class="mb-2"
           :name="item.name"
-          :department="item.department"
+          :church="item.church"
           :gender="item.gender"
           :score="item.score"
         />

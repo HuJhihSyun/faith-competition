@@ -25,25 +25,25 @@
 
   type UserInformation = {
     name: string
-    department: number
+    church: number
     gender: boolean
   }
 
   const userInformation = useLocalStorage<UserInformation>('loveWordsEventUserInfo', {
     name: '',
-    department: 0,
+    church: 0,
     gender: false
   })
 
   // 錯誤提示
   const isNameFalse = ref<boolean>(false)
-  const isDepartmentFalse = ref<boolean>(false)
+  const isChurchFalse = ref<boolean>(false)
 
   // 當前步驟
   const currentStep = ref<number>(0)
 
   const joinEvent = () => {
-    if (!userInformation.value.name || !userInformation.value.department) {
+    if (!userInformation.value.name || !userInformation.value.church) {
       if (!userInformation.value.name) {
         isNameFalse.value = true
 
@@ -51,11 +51,11 @@
           isNameFalse.value = false
         }, 500)
       }
-      if (!userInformation.value.department) {
-        isDepartmentFalse.value = true
+      if (!userInformation.value.church) {
+        isChurchFalse.value = true
 
         setTimeout(() => {
-          isDepartmentFalse.value = false
+          isChurchFalse.value = false
         }, 500)
       }
       return
@@ -120,6 +120,7 @@
   const { postLine } = useLineApi()
 
   const submitData = async (payloadData: Record<string, any>) => {
+    console.log('payloadData', payloadData)
     const response = await postLine(payloadData)
   }
 
@@ -160,11 +161,7 @@
         </h2>
         <div class="flex flex-col items-center mx-auto">
           <InputText :class="{ 'bg-red-400/80': isNameFalse }" v-model="userInformation.name" />
-          <DepartmentSelect
-            class="mt-4"
-            :class="{ 'bg-red-400/80': isDepartmentFalse }"
-            v-model="userInformation.department"
-          />
+          <DepartmentSelect class="mt-4" :class="{ 'bg-red-400/80': isChurchFalse }" v-model="userInformation.church" />
           <ToggleSwitch v-model="userInformation.gender" class="mt-4">
             <template #left-text> <FemaleSvg class="w-4 h-4" />姐妹 </template>
             <template #right-text> <MaleSvg class="w-4 h-4" />弟兄 </template>

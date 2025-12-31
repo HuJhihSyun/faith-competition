@@ -33,14 +33,14 @@
   const TaskProgresses = reactive<TaskProgress[]>([
     {
       title: '點閱',
-      id: 'click',
+      id: 'like',
       point: 0,
       times: 0,
       icon: markRaw(ClickSvg)
     },
     {
       title: '按讚',
-      id: 'thumb',
+      id: 'muster',
       point: 0,
       times: 0,
       icon: markRaw(ThumbSvg)
@@ -67,13 +67,11 @@
   const fetchResult = async () => {
     const res: any = await getLineResult()
     const result = JSON.parse(res)
+    console.log('result', result)
 
     TaskProgresses.forEach((taskProgress: { point: any; id: string; times: any }) => {
       taskProgress.point = result.score[taskProgress.id]
-      taskProgress.times =
-        taskProgress.id === 'pray'
-          ? result.times[`${taskProgress.id}-minutes`]
-          : result.times[`${taskProgress.id}-times`]
+      taskProgress.times = result.times[`${taskProgress.id}-times`]
     })
 
     point.value = result.score.summary
